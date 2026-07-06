@@ -1,0 +1,190 @@
+.datos {
+  width: 100%;
+  background-color: #fcfbf9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.datos-label {
+  color: #111111;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+  letter-spacing: 1px;
+  align-self: flex-start;
+  padding-left: 6vw;
+  margin-bottom: 0.5rem;
+}
+
+.datos-titulo {
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #111111;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin: 0 0 4rem 0;
+  align-self: flex-start;
+  padding-left: 6vw;
+}
+
+/* ================= DESKTOP MARQUEE ================= */
+
+.datos-marquee-container {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.datos-track-infinite {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marqueeContinuous 60s linear infinite;
+}
+
+.datos-marquee-container:hover .datos-track-infinite {
+  animation-play-state: paused;
+}
+
+.datos-slide {
+  flex-shrink: 0;
+  width: 320px;
+}
+
+@keyframes marqueeContinuous {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-33.333% - 0.5rem));
+  }
+}
+
+/* ================= MOBILE ================= */
+
+.datos-mobile-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.datos-mobile-container {
+  flex: 1;
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.datos-mobile-track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.datos-mobile-slide {
+  flex: 0 0 280px;
+  width: 280px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  box-sizing: border-box;
+}
+
+.datos-mobile-slide.inactive {
+  opacity: 0.35;
+  transform: scale(0.9);
+  pointer-events: none;
+}
+
+.datos-mobile-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Flechas */
+
+.mobile-arrow {
+  flex-shrink: 0;
+
+  width: 46px;
+  height: 46px;
+
+  border: 2px solid #111111;
+  border-radius: 50%;
+
+  background: #111111;
+  color: #fcfbf9;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+  outline: none;
+
+  box-shadow: 3px 3px 0px #000bdb;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-arrow:hover {
+  transform: translate(-1px, -1px);
+}
+
+.mobile-arrow:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #000bdb;
+}
+
+/* ================= MEDIA QUERIES ================= */
+
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .datos {
+    padding: 4rem 0;
+  }
+
+  .datos-mobile-wrapper {
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .mobile-arrow {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 390px) {
+  .datos-mobile-wrapper {
+    gap: 6px;
+    padding: 0 6px;
+  }
+
+  .mobile-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+}
