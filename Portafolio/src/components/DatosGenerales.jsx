@@ -4,7 +4,7 @@ import InfoCard from "./InfoCard";
 import datosGenerales from "../data/datosGenerales";
 
 function DatosGenerales() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   const datosEscritorio = [...datosGenerales, ...datosGenerales, ...datosGenerales];
 

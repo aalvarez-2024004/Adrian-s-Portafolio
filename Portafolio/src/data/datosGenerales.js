@@ -1,4 +1,8 @@
 const datosGenerales = [
+    {
+    titulo: "Dato Curioso",
+    contenido: "Me gustan los atardeceres",
+  },
   {
     titulo: "Nombre",
     contenido: "Adrian Rafael Alvarez Marín",
@@ -39,10 +43,7 @@ const datosGenerales = [
     titulo: "Color Favorito",
     contenido: "Negro y blanco",
   },
-    {
-    titulo: "Dato Curioso",
-    contenido: "Me gustan los atardeceres",
-  },
+  
 ];
 
 export default datosGenerales;
