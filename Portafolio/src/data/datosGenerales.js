@@ -8,6 +8,10 @@ const datosGenerales = [
     contenido: "18 años",
   },
   {
+    titulo: "Ubicación",
+    contenido: "Guatemala, Guatemala",
+  },
+  {
     titulo: "Correo electrónico",
     contenido: "adralvarez0022@gmail.com",
   },
@@ -16,12 +20,28 @@ const datosGenerales = [
     contenido: "+502 5713-9320",
   },
   {
+    titulo: "Formación",
+    contenido: "Périto en Informática",
+  },
+  {
     titulo: "Experiencia Backend",
     contenido: "3 años",
   },
   {
     titulo: "Experiencia Frontend",
     contenido: "1 año",
+  },
+  {
+    titulo: "Idiomas",
+    contenido: "Español · Inglés B1",
+  },
+  {
+    titulo: "Color Favorito",
+    contenido: "Negro y blanco",
+  },
+    {
+    titulo: "Dato Curioso",
+    contenido: "Me gustan los atardeceres",
   },
 ];
 
