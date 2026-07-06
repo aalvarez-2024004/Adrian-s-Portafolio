@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: flex-start;
   text-align: center;
-  padding: 7rem 7vw 7rem;
+  padding: 7rem 7vw 2rem;   /* antes: 7rem 7vw 7rem */
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
