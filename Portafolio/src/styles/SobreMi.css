@@ -1,0 +1,58 @@
+.sobremi {
+  min-height: 70vh;
+  width: 100%;
+  background-color: #fdf6f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 6vw;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.sobremi-label {
+  color: #1b2a6b;
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  align-self: flex-start;
+}
+
+.sobremi-titulo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #111111;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0 0 2.5rem 0;
+  max-width: 900px;
+}
+
+.sobremi-descripcion {
+  max-width: 850px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  line-height: 1.6;
+  color: #1a1a1a;
+}
+
+.sobremi-descripcion .highlight {
+  color: #1b2a6b;
+}
+
+@media (max-width: 768px) {
+  .sobremi {
+    padding: 4rem 6vw;
+    text-align: center;
+  }
+
+  .sobremi-label {
+    align-self: center;
+  }
+}
