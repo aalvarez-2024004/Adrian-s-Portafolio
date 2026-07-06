@@ -1,7 +1,7 @@
 .sobremi {
-  min-height: 30vh;
+  min-height: 10vh;
   width: 100%;
-  background-color: #fdf6f4;
+  background-color: #fcfbf9;
   display: flex;
   flex-direction: column;
   align-items: center;
