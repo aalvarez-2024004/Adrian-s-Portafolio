@@ -1,16 +1,20 @@
 import "../styles/InfoCard.css";
 
-function InfoCard({ titulo, contenido, detalle }) {
+function InfoCard({ titulo, contenido, detalle, index }) {
   return (
-    <div className="info-card">
-      <div className="info-card-header">
-        <span className="dot" />
-        <h3>{titulo}</h3>
-        <span className="dot" />
-      </div>
-      <div className="info-card-body">
-        <p className="info-card-contenido">{contenido}</p>
-        <p className="info-card-detalle">{detalle}</p>
+    <div className="stat-card">
+      <span className="stat-card-tag">{titulo}</span>
+
+      <div className="stat-card-inner">
+        <span className="stat-card-fold" />
+        <span className="stat-card-ghost">
+          {String(index ?? 0).padStart(2, "0")}
+        </span>
+
+        <p className="stat-card-value">{contenido}</p>
+        {detalle && <p className="stat-card-detail">{detalle}</p>}
+
+        <span className="stat-card-dot" />
       </div>
     </div>
   );

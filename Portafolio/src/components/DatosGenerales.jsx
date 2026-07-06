@@ -31,6 +31,7 @@ function DatosGenerales() {
                 titulo={dato.titulo}
                 contenido={dato.contenido}
                 detalle={dato.detalle || ""}
+                index={index % datosGenerales.length}
               />
             </div>
           ))}
@@ -61,6 +62,7 @@ function DatosGenerales() {
                     titulo={dato.titulo}
                     contenido={dato.contenido}
                     detalle={dato.detalle || ""}
+                    index={index}
                   />
                 </div>
               );

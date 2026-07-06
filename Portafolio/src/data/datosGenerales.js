@@ -33,7 +33,7 @@ const datosGenerales = [
   },
   {
     titulo: "Experiencia Frontend",
-    contenido: "1 año",
+    contenido: "2 años",
   },
   {
     titulo: "Idiomas",
