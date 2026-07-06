@@ -30,7 +30,7 @@
   padding-left: 6vw;
 }
 
-/* ================= DESKTOP MARQUEE ================= */
+/* DESKTOP MARQUEE */
 
 .datos-marquee-container {
   overflow: hidden;
@@ -66,7 +66,7 @@
   }
 }
 
-/* ================= MOBILE ================= */
+/* MOBILE */
 
 .datos-mobile-wrapper {
   width: 100%;
@@ -147,8 +147,6 @@
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0px #000bdb;
 }
-
-/* ================= MEDIA QUERIES ================= */
 
 @media (min-width: 769px) {
   .mobile-only {
