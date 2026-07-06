@@ -1,29 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap");
 
 .hero {
+  position: relative;
   min-height: 70vh;
   width: 100%;
-  background-image: url("../assets/FondoBienvenida.svg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
   font-family: "Poppins", sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 0 6vw;
+  padding: 4rem 6vw;
   overflow: hidden;
 }
 
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+}
+
 .hero-content {
-  display: flex;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr auto;
   align-items: center;
-  justify-content: flex-start;
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  gap: 20rem;
+  gap: clamp(2rem, 6vw, 8rem);
 }
 
 .hero-text {
@@ -48,12 +67,24 @@
   text-transform: uppercase;
   color: #ffffff;
   font-size: clamp(0.9rem, 1.8vw, 1.6rem);
-  max-width: 600px;
+  max-width: 500px;
   line-height: 1.4;
+}
+
+.hero-glow {
+  transition: text-shadow 0.4s ease, transform 0.4s ease;
+  cursor: default;
+}
+
+.hero-glow:hover {
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.45),
+    0 0 22px rgba(255, 255, 255, 0.25);
 }
 
 .hero-photo {
   flex-shrink: 0;
+  margin-right: clamp(2rem, 8vw, 10rem);
 }
 
 .hero-photo img {
@@ -63,24 +94,49 @@
   object-fit: cover;
   border: 6px solid #ffffff;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+.hero-photo img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1200px) {
+  .hero-photo img {
+    width: 320px;
+    height: 320px;
+  }
 }
 
 @media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr auto;
+    gap: clamp(1.5rem, 4vw, 4rem);
+  }
+
   .hero-photo img {
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 0 6vw;
+    padding: 3rem 6vw;
   }
 
   .hero-content {
-    flex-direction: column-reverse;
+    grid-template-columns: 1fr;
+    justify-items: center;
     text-align: center;
     gap: 2rem;
+  }
+
+  .hero-photo {
+    order: 1;
+    margin-right: 0;
   }
 
   .hero-quote {
@@ -97,6 +153,10 @@
 @media (max-width: 480px) {
   .hero-title {
     letter-spacing: -0.5px;
+  }
+
+  .hero-photo {
+    margin-right: 0;
   }
 
   .hero-photo img {
