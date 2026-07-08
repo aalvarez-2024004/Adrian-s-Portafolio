@@ -5,44 +5,30 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* Etiqueta tipo "sticker" que sobresale del borde superior */
+/* Etiqueta: ya no es sticker, es texto limpio con subrayado de acento */
 .stat-card-tag {
   position: absolute;
-  top: -14px;
-  left: 20px;
+  top: -0.9rem;
+  left: 1.6rem;
   z-index: 4;
-  background: #f4eee4;
-  border: 2px solid #111111;
-  border-radius: 6px;
-  padding: 5px 12px;
+  background: #fcfbf9;
+  padding: 0 0.6rem;
   font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 1.3px;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: #1b2a6b;
-  transform: rotate(-3deg);
-  box-shadow: 3px 3px 0 #111111;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: #000bdb;
 }
 
-.stat-card:hover .stat-card-tag {
-  transform: rotate(-3deg) translateY(-4px);
-  box-shadow: 4px 5px 0 #072a77;
-}
-
-/* Cuerpo principal con esquina "doblada" */
+/* Cuerpo principal: borde fino negro, sin sombra "offset" de cómic */
 .stat-card-inner {
   position: relative;
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  background-color: #040c2d;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
-  background-size: 14px 14px;
-  border: 2.5px solid #111111;
-  border-radius: 18px;
-  clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%);
-  box-shadow: 6px 6px 0 #111111;
+  background-color: #fcfbf9;
+  border: 1.5px solid #111111;
+  clip-path: polygon(0 0, calc(100% - 32px) 0, 100% 32px, 100% 100%, 0 100%);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -50,35 +36,42 @@
   align-items: center;
   text-align: center;
   padding: 2.2rem 1.3rem 1.4rem;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
 }
 
 .stat-card:hover .stat-card-inner {
-  transform: translate(-4px, -4px);
-  box-shadow: 10px 10px 0 #000bdb;
+  transform: translateY(-6px);
+  border-color: #000bdb;
 }
 
-/* Triángulo azul que simula el "doblez" de papel en la esquina cortada */
+/* Esquina cortada: línea fina en vez de triángulo relleno */
 .stat-card-fold {
   position: absolute;
   top: 0;
   right: 0;
-  width: 34px;
-  height: 34px;
-  background: linear-gradient(135deg, #000bdb 45%, #1b2a6b 100%);
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border-top: 1.5px solid #111111;
+  border-right: 1.5px solid #111111;
   clip-path: polygon(100% 0, 0 0, 100% 100%);
+  transition: border-color 0.35s ease;
   z-index: 1;
 }
 
-/* Número gigante de fondo, muy sutil */
+.stat-card:hover .stat-card-fold {
+  border-color: #000bdb;
+}
+
+/* Número gigante de fondo — se queda, encaja con el estilo editorial/bold del resto */
 .stat-card-ghost {
   position: absolute;
-  bottom: -20px;
-  right: 6px;
+  bottom: -22px;
+  right: 8px;
   font-weight: 900;
   font-size: 5.5rem;
-  color: rgba(255, 255, 255, 0.05);
+  color: rgba(17, 17, 17, 0.05);
   line-height: 1;
   z-index: 0;
   user-select: none;
@@ -88,7 +81,7 @@
 .stat-card-value {
   position: relative;
   z-index: 2;
-  color: #ffffff;
+  color: #111111;
   font-weight: 800;
   font-size: clamp(1rem, 4vw, 1.3rem);
   text-transform: uppercase;
@@ -101,7 +94,7 @@
 .stat-card-detail {
   position: relative;
   z-index: 2;
-  color: #9aa3d9;
+  color: #55596e;
   font-weight: 600;
   font-size: 0.78rem;
   letter-spacing: 0.4px;
@@ -118,21 +111,14 @@
   border-radius: 2px;
 }
 
-/* Punto de acento pulsante, esquina inferior izquierda */
+/* Punto de acento: ya sin animación pulsante, solo un detalle fijo */
 .stat-card-dot {
   position: absolute;
   bottom: 14px;
   left: 16px;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: #000bdb;
-  box-shadow: 0 0 0 4px rgba(0, 11, 219, 0.15);
   z-index: 2;
-  animation: pulseDot 2.4s ease-in-out infinite;
-}
-
-@keyframes pulseDot {
-  0%, 100% { box-shadow: 0 0 0 4px rgba(0, 11, 219, 0.15); }
-  50% { box-shadow: 0 0 0 7px rgba(0, 11, 219, 0.05); }
 }
