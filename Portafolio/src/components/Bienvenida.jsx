@@ -11,7 +11,7 @@ function Bienvenida() {
         src={videoFondo}
         autoPlay
         loop
-        muted
+        mutedg
         playsInline
       />
       <div className="hero-overlay" />
