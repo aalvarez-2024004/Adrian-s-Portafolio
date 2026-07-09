@@ -13,7 +13,7 @@
   width: 100%;
   overflow: hidden;
   font-family: "Poppins", sans-serif;
-  padding: 4rem 6vw 3rem;
+  padding: clamp(1.5rem, 5vh, 4rem) 6vw clamp(1rem, 3vh, 3rem);
   box-sizing: border-box;
   display: flex;
   align-items: flex-start;
@@ -58,10 +58,10 @@
   font-weight: 800;
   text-transform: uppercase;
   color: #e8e8e8;
-  font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+  font-size: clamp(1.8rem, 4vh, 4.8rem);
   line-height: 0.98;
   letter-spacing: -1.5px;
-  margin: 0 0 1rem 0;
+  margin: 0 0 clamp(0.5rem, 1.5vh, 1rem) 0;
 }
 
 .tecnologias-subtitulo {
@@ -69,14 +69,14 @@
   text-transform: uppercase;
   color: #e8e8e8;
   font-size: clamp(1rem, 2vw, 1.4rem);
-  margin: 0 0 2rem 0;
+  margin: 0 0 clamp(1rem, 3vh, 2rem) 0;
   letter-spacing: 1px;
 }
 
 .tecnologias-stage {
   display: flex;
   flex-direction: column;
-  gap: 5.5rem;
+  gap: clamp(1.5rem, 5vh, 5.5rem);
   max-width: 900px;
 }
 
@@ -96,14 +96,14 @@
 }
 
 .tech-icon {
-  width: 56px;
-  height: 56px;
+  width: clamp(36px, 5vh, 56px);
+  height: clamp(36px, 5vh, 56px);
   object-fit: contain;
 }
 
 .tech-pie {
-  width: 76px;
-  height: 76px;
+  width: clamp(52px, 7vh, 76px);
+  height: clamp(52px, 7vh, 76px);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -111,8 +111,8 @@
 }
 
 .tech-pie-inner {
-  width: 56px;
-  height: 56px;
+  width: clamp(38px, 5vh, 56px);
+  height: clamp(38px, 5vh, 56px);
   border-radius: 50%;
   background: #050505;
   display: flex;
@@ -133,6 +133,16 @@
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+}
+
+@media (max-height: 700px) {
+  .tecnologias-stage {
+    gap: 1.2rem;
+  }
+
+  .tech-group {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  }
 }
 
 @media (max-width: 1024px) {
