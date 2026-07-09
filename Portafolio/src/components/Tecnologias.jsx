@@ -16,7 +16,7 @@ const N = GRUPOS.length;
 
 const ANGEL_MAX_OFFSET = 900;
 const ANGEL_MAX_ROTATE = 25;
-const FADE_ZONE = 0.6; // qué tan gradual es la aparición de cada grupo (más alto = transición más larga)
+const FADE_ZONE = 0.6;
 const LERP_FACTOR = 0.075;
 
 function Tecnologias() {

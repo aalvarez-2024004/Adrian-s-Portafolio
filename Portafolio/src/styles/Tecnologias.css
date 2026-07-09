@@ -73,7 +73,6 @@
   letter-spacing: 1px;
 }
 
-/* Ahora los grupos van en columna, uno debajo del otro, acumulándose */
 .tecnologias-stage {
   display: flex;
   flex-direction: column;
