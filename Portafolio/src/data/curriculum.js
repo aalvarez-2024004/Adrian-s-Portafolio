@@ -10,31 +10,46 @@ const curriculum = {
         "Bases de Datos",
         "APIs REST",
         "Git y GitHub",
+        "Java",
+        "HTML",
+        "CSS",
+        "JAVASCRIPT",
+        "NODEJS",
+        ".NET",
+        "MONGODB",
+        "MYSQL"
       ],
     },
   ],
 
-  experienciaDesarrollo: [
+    experienciaDesarrollo: [
     {
-      nombre: "Portafolio Personal",
-      descripcion:
-        "Sitio web personal construido desde cero, con animaciones controladas por scroll y diseño responsive.",
-      stack: ["React", "Vite", "CSS"],
-      github: "https://github.com/TU-USUARIO/portafolio",
+        nombre: "EcoApp",
+        descripcion:
+        "Plataforma web para fomentar el reciclaje mediante inteligencia artificial. Permite identificar el contenedor correcto a partir de una fotografía, además de ofrecer un foro comunitario, gamificación, estadísticas del impacto ambiental, un asistente con IA y un mapa con centros de reciclaje cercanos.",
+        stack: [
+        "React + Vite",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "IA",
+        "Google Maps"
+        ],
+        github: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
     },
     {
-      nombre: "Nombre del Proyecto 2",
-      descripcion: "Breve descripción del proyecto y su propósito.",
-      stack: ["Node.js", "Express", "MongoDB"],
-      github: "https://github.com/TU-USUARIO/proyecto-2",
+        nombre: "Juego del Ahorcado",
+        descripcion:
+        "Aplicación web interactiva desarrollada como proyecto académico. Obtiene palabras desde una base de datos MySQL, ofrece pistas al jugador y registra el progreso de la partida.",
+        stack: [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "MySQL"
+        ],
+        github: "https://github.com/aalvarez-2024004/ProyectoFinal4toBim.git",
     },
-    {
-      nombre: "Nombre del Proyecto 3",
-      descripcion: "Breve descripción del proyecto y su propósito.",
-      stack: ["Java", "Spring Boot", "MySQL"],
-      github: "https://github.com/TU-USUARIO/proyecto-3",
-    },
-  ],
+    ],
 
   experienciaLaboral: [
     {
