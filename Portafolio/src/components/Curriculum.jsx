@@ -46,7 +46,49 @@ function TimelineItem({ eyebrow, title, subtitle, children }) {
   );
 }
 
+const CV_PDF_URL = "/cv/CVAdrianAlvarez.pdf";
+const CV_FILE_NAME = "Adrian-Alvarez-CV.pdf";
+
+function CvModal({ onClose }) {
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    document.addEventListener("keydown", onKeyDown);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return (
+    <div className="cv-modal-overlay" onClick={onClose}>
+      <div className="cv-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="cv-modal-header">
+          <span>Vista previa — Curriculum Vitae</span>
+          <button
+            type="button"
+            className="cv-modal-close"
+            onClick={onClose}
+            aria-label="Cerrar"
+          >
+            ✕
+          </button>
+        </div>
+        <iframe
+          src={CV_PDF_URL}
+          title="Curriculum Vitae"
+          className="cv-modal-frame"
+        />
+      </div>
+    </div>
+  );
+}
+
 function Curriculum() {
+  const [showPreview, setShowPreview] = useState(false);
+
   return (
     <section className="curriculum-wrapper" id="curriculum">
       <div className="curriculum-header">
@@ -56,7 +98,26 @@ function Curriculum() {
           VITAE
         </h2>
         <p className="curriculum-subtitulo">Educación &amp; Experiencia</p>
+
+        <div className="cv-acciones">
+          <button
+            type="button"
+            className="cv-btn cv-btn--primary"
+            onClick={() => setShowPreview(true)}
+          >
+            Vista previa
+          </button>
+          <a
+            className="cv-btn cv-btn--outline"
+            href={CV_PDF_URL}
+            download={CV_FILE_NAME}
+          >
+            Descargar CV
+          </a>
+        </div>
       </div>
+
+      {showPreview && <CvModal onClose={() => setShowPreview(false)} />}
 
       <div className="curriculum-grid">
         {/* Educación */}
