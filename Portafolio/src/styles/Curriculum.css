@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap");
+
+.curriculum-wrapper {
+  width: 100%;
+  background: #f4f4f4;
+  font-family: "Poppins", sans-serif;
+  padding: 6rem 6vw 7rem;
+  box-sizing: border-box;
+  color: #0a0a0a;
+}
+
+.curriculum-header {
+  max-width: 1400px;
+  margin: 0 auto 4rem;
+}
+
+.curriculum-titulo {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+  line-height: 0.98;
+  letter-spacing: -1.5px;
+  margin: 0 0 1rem 0;
+}
+
+.curriculum-subtitulo {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  letter-spacing: 1px;
+  color: #3355ff;
+  margin: 0;
+}
+
+.curriculum-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.cv-columna-titulo {
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 2rem 0;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid #0a0a0a;
+}
+
+/* --- Timeline item --- */
+
+.cv-item {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cv-item--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cv-item-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cv-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #3355ff;
+  margin-top: 6px;
+}
+
+.cv-line {
+  flex: 1;
+  width: 2px;
+  background: #d6d6d6;
+  margin-top: 4px;
+}
+
+.cv-item:last-child .cv-line {
+  display: none;
+}
+
+.cv-item-content {
+  padding-bottom: 2.6rem;
+}
+
+.cv-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #3355ff;
+  margin-bottom: 0.4rem;
+}
+
+.cv-item-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem 0;
+}
+
+.cv-item-subtitle {
+  font-size: 0.88rem;
+  color: #4a4a4a;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.5;
+}
+
+.cv-tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background: #0a0a0a;
+  color: #ffffff;
+  padding: 0.35rem 0.7rem;
+  border-radius: 20px;
+}
+
+.cv-bullets {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.cv-bullets li {
+  font-size: 0.85rem;
+  color: #333;
+  margin-bottom: 0.35rem;
+  line-height: 1.5;
+}
+
+.cv-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  text-decoration: none;
+  border-bottom: 2px solid #3355ff;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.cv-link:hover {
+  color: #3355ff;
+}
+
+/* --- Responsive --- */
+
+@media (max-width: 1024px) {
+  .curriculum-grid {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .curriculum-wrapper {
+    padding: 4rem 6vw 4rem;
+  }
+
+  .curriculum-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-item {
+    opacity: 1;
+    transform: none;
+  }
+}
