@@ -182,8 +182,16 @@
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 2rem 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.2rem 1rem;
+  }
+
+  /* Si un grupo queda con número impar de tarjetas, centra la última en vez
+     de dejarla pegada a la izquierda */
+  .tech-group .tech-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 
   .tech-pie {
