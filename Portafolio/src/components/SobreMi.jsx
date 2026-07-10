@@ -13,7 +13,7 @@ function SobreMi() {
         <span className="highlight">Perito en Informática</span>, con la
         meta de continuar mi formación en{" "}
         <span className="highlight">Ingeniería en Sistemas</span>. Me
-        considero una persona responsable y apasionada por la{" "}
+        considero una persona responsable y apasionado por la{" "}
         <span className="highlight">tecnología</span>; disfruto{" "}
         <span className="highlight">programar</span>,{" "}
         <span className="highlight">resolver problemas</span> y diseñar
