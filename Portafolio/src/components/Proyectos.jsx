@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import "../styles/Proyectos.css";
 import proyectos from "../data/proyectos";
+import fondoVideo from "../assets/FondoProyectos.mp4";
 
 /* ---------- Hook: detecta si estamos en viewport móvil ---------- */
 function useIsMobile(breakpoint = 768) {
@@ -138,26 +139,27 @@ function ProyectoModal({ proyecto, onClose }) {
             </ul>
 
             <div className="py-modal-links">
-              {proyecto.github && (
+              {proyecto.github ? (
                 <a
                   href={proyecto.github}
                   target="_blank"
                   rel="noreferrer"
                   className="py-btn py-btn--primary"
                 >
-                  Ver repositorio ↗
+                  Ver repositorio
                 </a>
-              )}
-              {proyecto.demo && (
+              ) : null}
+              
+              {proyecto.demo ? (
                 <a
                   href={proyecto.demo}
                   target="_blank"
                   rel="noreferrer"
                   className="py-btn py-btn--outline"
                 >
-                  Ver demo ↗
+                  Ver demo
                 </a>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
@@ -305,6 +307,16 @@ function Proyectos() {
   if (isMobile) {
     return (
       <section className="proyectos-wrapper proyectos-wrapper--mobile" id="proyectos">
+        <video
+          className="proyectos-video-fondo"
+          src={fondoVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+
         <div className="proyectos-header">
           <h2 className="proyectos-titulo">
             VISTA DE
@@ -367,6 +379,16 @@ function Proyectos() {
 
   return (
     <section className="proyectos-wrapper" id="proyectos" ref={wrapperRef}>
+      <video
+        className="proyectos-video-fondo"
+        src={fondoVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+
       <div className="proyectos-pin">
         <div className="proyectos-header">
           <h2 className="proyectos-titulo">
