@@ -201,6 +201,7 @@ function Proyectos() {
 
   const sectionRef = useRef(null);
   const trackRef = useRef(null);
+  const stickyRef = useRef(null);
   const [index, setIndex] = useState(0);
   const [modalProyecto, setModalProyecto] = useState(null);
   const rafId = useRef(null);
@@ -222,15 +223,27 @@ function Proyectos() {
 
         const scrolled = -rect.top;
         const progress = Math.min(Math.max(scrolled / scrollableHeight, 0), 1);
+
+        // "Pin" manual con transform en vez de depender de position: sticky.
+        // Esto evita el bug clasico donde un ancestro con overflow-x: hidden
+        // (o cualquier ancestro con transform, ej. wrappers de Framer Motion)
+        // rompe silenciosamente el sticky y la seccion deja de fijarse.
+        const pinOffset = Math.min(Math.max(scrolled, 0), scrollableHeight);
+        if (stickyRef.current) {
+          stickyRef.current.style.transform = `translateY(${pinOffset}px)`;
+        }
+
         const nuevoIndex = Math.round(progress * (total - 1));
         setIndex((prev) => (prev === nuevoIndex ? prev : nuevoIndex));
       });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
     onScroll();
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
       if (rafId.current) cancelAnimationFrame(rafId.current);
     };
   }, [isMobile, total]);
@@ -261,7 +274,10 @@ function Proyectos() {
       ref={sectionRef}
       style={!isMobile ? { height: `${total * 100}vh` } : undefined}
     >
-      <div className={isMobile ? "" : "proyectos-sticky"}>
+      <div
+        className={isMobile ? "" : "proyectos-sticky"}
+        ref={!isMobile ? stickyRef : undefined}
+      >
         <div className="proyectos-header">
           <h2 className="proyectos-titulo">
             VISTA DE
