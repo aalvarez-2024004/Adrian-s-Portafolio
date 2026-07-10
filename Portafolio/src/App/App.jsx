@@ -3,6 +3,7 @@ import SobreMi from "../components/SobreMi";
 import DatosGenerales from "../components/DatosGenerales";
 import Tecnologias from "../components/Tecnologias";
 import Curriculum from "../components/Curriculum";
+import Proyectos from "../components/Proyectos";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <DatosGenerales />
       <Tecnologias />
       <Curriculum />
+      <Proyectos />
     </>
   );
 }
