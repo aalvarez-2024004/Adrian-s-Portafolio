@@ -1,15 +1,3 @@
-// src/data/proyectos.js
-//
-// Cada "portada" e "imagenes" debe apuntar a un archivo dentro de src/assets.
-// Ejemplo de import en la parte superior del archivo si prefieres importarlas
-// en vez de usar rutas de string (recomendado con Vite, ya que así el bundler
-// las optimiza):
-//
-// import ecoAppPortada from "../assets/ecoapp/portada.png";
-// import ecoAppFoto1 from "../assets/ecoapp/foto1.png";
-//
-// y luego usarlas dentro del objeto: portada: ecoAppPortada
-
 const proyectos = [
   {
     id: "ecoapp",
