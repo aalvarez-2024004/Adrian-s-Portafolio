@@ -13,6 +13,7 @@ import kbLogin from "../assets/kinalBank/LoginKB.png";
 import kbClient from "../assets/kinalBank/ClientBank.png";
 import kbAdmin from "../assets/kinalBank/AdminBank.png";
 import kbTransfer from "../assets/kinalBank/TransferKB.png";
+import kbVideo from "../assets/kinalBank/KinalBank.mp4";
 
 // ---------- LanaTasks ----------
 import ltLogin from "../assets/lanaTasks/LoginLana.png";
@@ -62,8 +63,8 @@ const proyectos = [
     stack: ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL", "Exchange API"],
     github: "", // TODO: agregar URL del repositorio
     demo: null, // TODO: agregar URL si está desplegado
-    portadaTipo: "imagen",
-    portada: kbLogin,
+    portadaTipo: "video",
+    portada: kbVideo,
     imagenes: [kbLogin, kbClient, kbAdmin, kbTransfer],
   },
   {
