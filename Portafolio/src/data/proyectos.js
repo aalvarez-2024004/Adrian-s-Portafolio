@@ -47,8 +47,8 @@ const proyectos = [
     descripcionLarga:
       "Kinal Gourmet House busca asociar restaurantes que quieran publicar sus menús y perfiles dentro de la plataforma, permitiendo a los clientes explorar una variedad de restaurantes y realizar pedidos de comida directamente por medio de la aplicación.",
     stack: ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL"],
-    github: "", // TODO: agregar URL del repositorio
-    demo: null, // TODO: agregar URL si está desplegado
+    github: "https://github.com/jrealiquez-2021549/AppMovil-SistemaRestaurante/tree/ftrealiquez-2021549",
+    demo: "https://kinal-gourmet-web.vercel.app/",
     portadaTipo: "video",
     portada: kgVideo,
     imagenes: [kgHome, kgAdmin, kgAdminRest, kgAdminRest1, kg1, kg2, kg3],
@@ -61,8 +61,8 @@ const proyectos = [
     descripcionLarga:
       "Kinal Bank busca facilitar y maximizar la seguridad entre el usuario y el banco. Permite realizar transferencias, recibir depósitos y obtener productos y membresías. Integra la API Exchange para hacer conversiones de moneda en tiempo real, por ejemplo enviar dinero desde una cuenta en dólares hacia una cuenta en quetzales con la conversión hecha automáticamente.",
     stack: ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL", "Exchange API"],
-    github: "", // TODO: agregar URL del repositorio
-    demo: null, // TODO: agregar URL si está desplegado
+    github: "https://github.com/aalvarez-2024004/AppMovil-SistemaBancario/tree/ftaalvarez-2024004",
+    demo: "https://app-movil-sistema-bancario-hfca.vercel.app/",
     portadaTipo: "video",
     portada: kbVideo,
     imagenes: [kbLogin, kbClient, kbAdmin, kbTransfer],
