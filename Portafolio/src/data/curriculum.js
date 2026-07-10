@@ -21,48 +21,48 @@ const curriculum = {
       ],
     },
   ],
-  
+
   habilidadesBlandas: [
-    "Trabajo en equipo",
-    "Comunicación efectiva",
-    "Resolución de problemas",
-    "Adaptabilidad",
-    "Proactividad",
-    "Pensamiento crítico",
-    "Gestión del tiempo",
-    "Atención al cliente",
-    "Aprendizaje continuo",
-    "Responsabilidad",
+    { label: "Trabajo en equipo", icon: "team" },
+    { label: "Comunicación efectiva", icon: "communication" },
+    { label: "Resolución de problemas", icon: "problem" },
+    { label: "Adaptabilidad", icon: "adaptability" },
+    { label: "Proactividad", icon: "proactivity" },
+    { label: "Pensamiento crítico", icon: "critical" },
+    { label: "Gestión del tiempo", icon: "time" },
+    { label: "Atención al cliente", icon: "service" },
+    { label: "Aprendizaje continuo", icon: "growth" },
+    { label: "Responsabilidad", icon: "responsibility" },
   ],
 
-    experienciaDesarrollo: [
+  experienciaDesarrollo: [
     {
-        nombre: "EcoApp",
-        descripcion:
+      nombre: "EcoApp",
+      descripcion:
         "Plataforma web para fomentar el reciclaje mediante inteligencia artificial. Permite identificar el contenedor correcto a partir de una fotografía, además de ofrecer un foro comunitario, gamificación, estadísticas del impacto ambiental, un asistente con IA y un mapa con centros de reciclaje cercanos.",
-        stack: [
+      stack: [
         "React + Vite",
         "Node.js",
         "Express",
         "MongoDB",
         "IA",
         "Google Maps"
-        ],
-        github: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
+      ],
+      github: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
     },
     {
-        nombre: "Juego del Ahorcado",
-        descripcion:
+      nombre: "Juego del Ahorcado",
+      descripcion:
         "Aplicación web interactiva desarrollada como proyecto académico. Obtiene palabras desde una base de datos MySQL, ofrece pistas al jugador y registra el progreso de la partida.",
-        stack: [
+      stack: [
         "JavaScript",
         "HTML",
         "CSS",
         "MySQL"
-        ],
-        github: "https://github.com/aalvarez-2024004/ProyectoFinal4toBim.git",
+      ],
+      github: "https://github.com/aalvarez-2024004/ProyectoFinal4toBim.git",
     },
-    ],
+  ],
 
   experienciaLaboral: [
     {
