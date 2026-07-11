@@ -140,6 +140,18 @@ function Curriculum() {
               </ul>
             </TimelineItem>
           ))}
+
+          {/* Habilidades Blandas */}
+          <div className="cv-skills-block">
+            <span className="cv-eyebrow">Habilidades Blandas</span>
+            <ul className="cv-tags cv-tags--skills">
+              {curriculum.habilidadesBlandas.map((skill) => (
+                <li key={skill} className="cv-tag cv-tag--skill">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         {/* Experiencia en Desarrollo */}

@@ -55,6 +55,28 @@
   transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
+/* --- Habilidades Blandas --- */
+
+.cv-skills-block {
+  margin-top: 0.5rem;
+}
+
+.cv-tags--skills {
+  margin-top: 0.6rem;
+}
+
+.cv-tag--skill {
+  background: transparent;
+  color: #0a0a0a;
+  border: 2px solid #0a0a0a;
+}
+
+.cv-tag--skill:hover {
+  background: #3355ff;
+  border-color: #3355ff;
+  color: #ffffff;
+}
+
 .cv-btn--primary {
   background: #0a0a0a;
   color: #ffffff;

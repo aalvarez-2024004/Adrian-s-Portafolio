@@ -21,6 +21,19 @@ const curriculum = {
       ],
     },
   ],
+  
+  habilidadesBlandas: [
+    "Trabajo en equipo",
+    "Comunicación efectiva",
+    "Resolución de problemas",
+    "Adaptabilidad",
+    "Proactividad",
+    "Pensamiento crítico",
+    "Gestión del tiempo",
+    "Atención al cliente",
+    "Aprendizaje continuo",
+    "Responsabilidad",
+  ],
 
     experienciaDesarrollo: [
     {
