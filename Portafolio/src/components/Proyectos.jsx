@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import "../styles/Proyectos.css";
 import proyectos from "../data/proyectos";
 
@@ -15,6 +16,26 @@ function useIsMobile(breakpoint = 768) {
   }, [breakpoint]);
 
   return isMobile;
+}
+
+/* ---------- Portada: renderiza video o imagen segun el proyecto ---------- */
+function Portada({ proyecto, className }) {
+  if (proyecto.portadaTipo === "video") {
+    return (
+      <video
+        className={className}
+        src={proyecto.portada}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+      />
+    );
+  }
+  return (
+    <img src={proyecto.portada} alt={proyecto.nombre} className={className} />
+  );
 }
 
 /* ---------- Modal de galería + descripción completa ---------- */
@@ -145,139 +166,145 @@ function ProyectoModal({ proyecto, onClose }) {
   );
 }
 
-/* ---------- Tarjeta individual (portada + barra de info) ---------- */
-function ProyectoCard({ proyecto, offset, esActivo, onAbrirModal }) {
-  const abs = Math.abs(offset);
-
-  // Fuera de +-2 posiciones ni se pinta (mejor performance, y evita clutter visual)
-  if (abs > 2) return null;
-
-  const translateX = offset * 320; // separación horizontal entre tarjetas
-  const scale = esActivo ? 1 : 1 - abs * 0.16;
-  const rotate = offset * 6;
-  const opacity = abs > 2 ? 0 : 1 - abs * 0.28;
-  const zIndex = 10 - abs;
-
-  return (
-    <div
-      className={`py-card ${esActivo ? "py-card--activa" : ""}`}
-      style={{
-        transform: `translate(-50%, -50%) translateX(${translateX}px) scale(${scale}) rotate(${rotate}deg)`,
-        opacity,
-        zIndex,
-      }}
-    >
-      <div className="py-card-imagen-wrap">
-        <img
-          src={proyecto.portada}
-          alt={proyecto.nombre}
-          className="py-card-imagen"
-        />
-      </div>
-
-      {esActivo && (
-        <div className="py-info-bar">
-          <div className="py-info-texto">
-            <span className="py-info-titulo">{proyecto.nombre}</span>
-            <p className="py-info-desc">{proyecto.descripcionCorta}</p>
-          </div>
-          <button
-            type="button"
-            className="py-ver-mas"
-            onClick={() => onAbrirModal(proyecto)}
-          >
-            Ver más
-          </button>
-        </div>
-      )}
-    </div>
-  );
-}
-
 /* ---------- Sección principal ---------- */
 function Proyectos() {
   const isMobile = useIsMobile();
   const total = proyectos.length;
 
-  const sectionRef = useRef(null);
-  const trackRef = useRef(null);
-  const stickyRef = useRef(null);
-  const [index, setIndex] = useState(0);
-  const [modalProyecto, setModalProyecto] = useState(null);
-  const rafId = useRef(null);
+  const wrapperRef = useRef(null); // define la zona de "enganche" del scroll
+  const stageRef = useRef(null); // la tarjeta protagonista que GSAP anima
+  const mobileTrackRef = useRef(null);
 
-  /* --- Desktop: scroll-driven (scrollytelling) --- */
+  const [displayIndex, setDisplayIndex] = useState(0); // que proyecto se ve ahora
+  const [modalProyecto, setModalProyecto] = useState(null);
+
+  // Refs para el estado interno del wheel-lock (no necesitan re-render)
+  const lockedRef = useRef(false);
+  const animatingRef = useRef(false);
+  const wheelAccumRef = useRef(0);
+  const indexRef = useRef(0); // espejo sincrono de displayIndex, para leer dentro del listener
+
+  useEffect(() => {
+    indexRef.current = displayIndex;
+  }, [displayIndex]);
+
+  /* --- Animacion de transicion entre proyectos (Apple-style) --- */
+  const goToIndex = useCallback((nuevoIndex, direccion) => {
+    const clamped = Math.max(0, Math.min(total - 1, nuevoIndex));
+    if (clamped === indexRef.current || animatingRef.current) return;
+
+    animatingRef.current = true;
+    const stage = stageRef.current;
+    const exitX = direccion > 0 ? -120 : 120;
+    const enterX = direccion > 0 ? 120 : -120;
+
+    gsap.to(stage, {
+      x: exitX,
+      opacity: 0,
+      scale: 0.85,
+      filter: "blur(10px)",
+      duration: 0.35,
+      ease: "power2.in",
+      onComplete: () => {
+        indexRef.current = clamped;
+        setDisplayIndex(clamped);
+
+        gsap.fromTo(
+          stage,
+          { x: enterX, opacity: 0, scale: 0.85, filter: "blur(10px)" },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 0.55,
+            ease: "power3.out",
+            onComplete: () => {
+              animatingRef.current = false;
+            },
+          }
+        );
+      },
+    });
+  }, [total]);
+
+  /* --- Wheel-lock: intercepta el scroll mientras la seccion esta "enganchada" --- */
   useEffect(() => {
     if (isMobile) return;
 
-    const onScroll = () => {
-      if (rafId.current) return;
-      rafId.current = requestAnimationFrame(() => {
-        rafId.current = null;
-        const section = sectionRef.current;
-        if (!section) return;
+    const wrapper = wrapperRef.current;
 
-        const rect = section.getBoundingClientRect();
-        const scrollableHeight = section.offsetHeight - window.innerHeight;
-        if (scrollableHeight <= 0) return;
+    const checkEngage = () => {
+      const rect = wrapper.getBoundingClientRect();
+      // Considerado "enganchado" mientras el sticky lo mantiene pegado arriba
+      lockedRef.current = Math.abs(rect.top) < 2;
+    };
 
-        const scrolled = -rect.top;
-        const progress = Math.min(Math.max(scrolled / scrollableHeight, 0), 1);
+    const onScroll = () => checkEngage();
 
-        // "Pin" manual con transform en vez de depender de position: sticky.
-        // Esto evita el bug clasico donde un ancestro con overflow-x: hidden
-        // (o cualquier ancestro con transform, ej. wrappers de Framer Motion)
-        // rompe silenciosamente el sticky y la seccion deja de fijarse.
-        const pinOffset = Math.min(Math.max(scrolled, 0), scrollableHeight);
-        if (stickyRef.current) {
-          stickyRef.current.style.transform = `translateY(${pinOffset}px)`;
-        }
+    const onWheel = (e) => {
+      if (!lockedRef.current) return;
 
-        const nuevoIndex = Math.round(progress * (total - 1));
-        setIndex((prev) => (prev === nuevoIndex ? prev : nuevoIndex));
-      });
+      if (animatingRef.current) {
+        e.preventDefault();
+        return;
+      }
+
+      const goingDown = e.deltaY > 0;
+      const atStart = indexRef.current === 0;
+      const atEnd = indexRef.current === total - 1;
+
+      // En los bordes, deja pasar el scroll nativo para salir de la seccion
+      if ((goingDown && atEnd) || (!goingDown && atStart)) {
+        return;
+      }
+
+      e.preventDefault();
+      wheelAccumRef.current += e.deltaY;
+
+      const THRESHOLD = 55;
+      if (Math.abs(wheelAccumRef.current) > THRESHOLD) {
+        const dir = wheelAccumRef.current > 0 ? 1 : -1;
+        wheelAccumRef.current = 0;
+        goToIndex(indexRef.current + dir, dir);
+      }
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    onScroll();
+    window.addEventListener("wheel", onWheel, { passive: false });
+    checkEngage();
+
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (rafId.current) cancelAnimationFrame(rafId.current);
+      window.removeEventListener("wheel", onWheel);
     };
-  }, [isMobile, total]);
-
-  /* --- Mobile: swipe / scroll horizontal con snap --- */
-  const onTrackScroll = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    const cardWidth = el.offsetWidth * 0.82; // debe calzar con --py-card-w-mobile
-    const nuevoIndex = Math.round(el.scrollLeft / cardWidth);
-    setIndex((prev) => (prev === nuevoIndex ? prev : nuevoIndex));
-  }, []);
+  }, [isMobile, total, goToIndex]);
 
   const irAProyecto = (i) => {
     if (isMobile) {
-      const el = trackRef.current;
+      const el = mobileTrackRef.current;
       if (!el) return;
       const cardWidth = el.offsetWidth * 0.82;
       el.scrollTo({ left: i * cardWidth, behavior: "smooth" });
+      setDisplayIndex(i);
+      return;
     }
-    setIndex(i);
+    const dir = i > indexRef.current ? 1 : -1;
+    goToIndex(i, dir);
   };
 
-  return (
-    <section
-      className="proyectos-wrapper"
-      id="proyectos"
-      ref={sectionRef}
-      style={!isMobile ? { height: `${total * 100}vh` } : undefined}
-    >
-      <div
-        className={isMobile ? "" : "proyectos-sticky"}
-        ref={!isMobile ? stickyRef : undefined}
-      >
+  const onTrackScrollMobile = useCallback(() => {
+    const el = mobileTrackRef.current;
+    if (!el) return;
+    const cardWidth = el.offsetWidth * 0.82;
+    const nuevoIndex = Math.round(el.scrollLeft / cardWidth);
+    setDisplayIndex((prev) => (prev === nuevoIndex ? prev : nuevoIndex));
+  }, []);
+
+  /* ---------- Mobile: scroll horizontal nativo con snap ---------- */
+  if (isMobile) {
+    return (
+      <section className="proyectos-wrapper proyectos-wrapper--mobile" id="proyectos">
         <div className="proyectos-header">
           <h2 className="proyectos-titulo">
             VISTA DE
@@ -287,59 +314,109 @@ function Proyectos() {
           <p className="proyectos-subtitulo">Capturas &amp; demostraciones</p>
         </div>
 
-        {isMobile ? (
-          <div
-            className="proyectos-track-mobile"
-            ref={trackRef}
-            onScroll={onTrackScroll}
-          >
-            {proyectos.map((p) => (
-              <div key={p.id} className="py-card-mobile">
-                <div className="py-card-imagen-wrap">
-                  <img
-                    src={p.portada}
-                    alt={p.nombre}
-                    className="py-card-imagen"
-                  />
-                </div>
-                <div className="py-info-bar py-info-bar--mobile">
-                  <div className="py-info-texto">
-                    <span className="py-info-titulo">{p.nombre}</span>
-                    <p className="py-info-desc">{p.descripcionCorta}</p>
-                  </div>
-                  <button
-                    type="button"
-                    className="py-ver-mas"
-                    onClick={() => setModalProyecto(p)}
-                  >
-                    Ver más
-                  </button>
-                </div>
+        <div
+          className="proyectos-track-mobile"
+          ref={mobileTrackRef}
+          onScroll={onTrackScrollMobile}
+        >
+          {proyectos.map((p) => (
+            <div key={p.id} className="py-card-mobile">
+              <div className="py-card-imagen-wrap">
+                <Portada proyecto={p} className="py-card-imagen" />
               </div>
-            ))}
-          </div>
-        ) : (
-          <div className="proyectos-track" ref={trackRef}>
-            {proyectos.map((p, i) => (
-              <ProyectoCard
-                key={p.id}
-                proyecto={p}
-                offset={i - index}
-                esActivo={i === index}
-                onAbrirModal={setModalProyecto}
-              />
-            ))}
-          </div>
-        )}
+              <div className="py-info-bar py-info-bar--mobile">
+                <div className="py-info-texto">
+                  <span className="py-info-titulo">{p.nombre}</span>
+                  <p className="py-info-desc">{p.descripcionCorta}</p>
+                </div>
+                <button
+                  type="button"
+                  className="py-ver-mas"
+                  onClick={() => setModalProyecto(p)}
+                >
+                  Ver más
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
 
         <div className="proyectos-dots">
           {proyectos.map((p, i) => (
             <button
               key={p.id}
               type="button"
-              className={`proyectos-dot ${
-                i === index ? "proyectos-dot--activo" : ""
-              }`}
+              className={`proyectos-dot ${i === displayIndex ? "proyectos-dot--activo" : ""}`}
+              onClick={() => irAProyecto(i)}
+              aria-label={`Ir a ${p.nombre}`}
+            />
+          ))}
+        </div>
+
+        {modalProyecto && (
+          <ProyectoModal proyecto={modalProyecto} onClose={() => setModalProyecto(null)} />
+        )}
+      </section>
+    );
+  }
+
+  /* ---------- Desktop: slideshow protagonista, wheel-driven ---------- */
+  const proyectoActual = proyectos[displayIndex];
+  const proyectoAnterior = proyectos[displayIndex - 1];
+  const proyectoSiguiente = proyectos[displayIndex + 1];
+
+  return (
+    <section className="proyectos-wrapper" id="proyectos" ref={wrapperRef}>
+      <div className="proyectos-pin">
+        <div className="proyectos-header">
+          <h2 className="proyectos-titulo">
+            VISTA DE
+            <br />
+            PROYECTOS
+          </h2>
+          <p className="proyectos-subtitulo">Capturas &amp; demostraciones</p>
+        </div>
+
+        <div className="proyectos-escenario">
+          {proyectoAnterior && (
+            <div className="py-peek py-peek--izq">
+              <Portada proyecto={proyectoAnterior} className="py-peek-imagen" />
+            </div>
+          )}
+
+          <div className="py-stage" ref={stageRef}>
+            <div className="py-card-imagen-wrap">
+              <Portada proyecto={proyectoActual} className="py-card-imagen" />
+            </div>
+
+            <div className="py-info-bar">
+              <div className="py-info-texto">
+                <span className="py-info-titulo">{proyectoActual.nombre}</span>
+                <p className="py-info-desc">{proyectoActual.descripcionCorta}</p>
+              </div>
+              <button
+                type="button"
+                className="py-ver-mas"
+                onClick={() => setModalProyecto(proyectoActual)}
+              >
+                Ver más
+              </button>
+            </div>
+          </div>
+
+          {proyectoSiguiente && (
+            <div className="py-peek py-peek--der">
+              <Portada proyecto={proyectoSiguiente} className="py-peek-imagen" />
+            </div>
+          )}
+        </div>
+
+        <div className="proyectos-dots">
+          {proyectos.map((p, i) => (
+            <button
+              key={p.id}
+              type="button"
+              className={`proyectos-dot ${i === displayIndex ? "proyectos-dot--activo" : ""}`}
               onClick={() => irAProyecto(i)}
               aria-label={`Ir a ${p.nombre}`}
             />
@@ -348,10 +425,7 @@ function Proyectos() {
       </div>
 
       {modalProyecto && (
-        <ProyectoModal
-          proyecto={modalProyecto}
-          onClose={() => setModalProyecto(null)}
-        />
+        <ProyectoModal proyecto={modalProyecto} onClose={() => setModalProyecto(null)} />
       )}
     </section>
   );
