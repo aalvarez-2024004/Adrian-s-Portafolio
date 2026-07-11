@@ -122,7 +122,7 @@ function Curriculum() {
       <div className="curriculum-grid">
         {/* Educación */}
         <div className="cv-columna">
-          <h3 className="cv-columna-titulo">Educación</h3>
+          <h3 className="cv-columna-titulo">Educación y Habilidades Blandas</h3>
 
           {curriculum.educacion.map((edu) => (
             <TimelineItem
