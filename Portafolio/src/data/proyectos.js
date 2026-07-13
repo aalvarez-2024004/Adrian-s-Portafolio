@@ -52,6 +52,7 @@ const proyectos = [
     portadaTipo: "video",
     portada: kgVideo,
     imagenes: [kgHome, kgAdmin, kgAdminRest, kgAdminRest1, kg1, kg2, kg3],
+    colorAcento: "#ff6b00",
   },
   {
     id: "kinalbank",
@@ -66,6 +67,7 @@ const proyectos = [
     portadaTipo: "video",
     portada: kbVideo,
     imagenes: [kbLogin, kbClient, kbAdmin, kbTransfer],
+    colorAcento: "#2277ff",
   },
   {
     id: "lanatasks",
@@ -75,11 +77,12 @@ const proyectos = [
     descripcionLarga:
       "LanaTasks permite registrarse y organizar tareas de forma sencilla: se puede asignar prioridad, materia y fecha de vencimiento, recibir recordatorios y marcar tareas como completadas. Incluye un calendario para fechas importantes y un asistente de inteligencia artificial integrado que responde preguntas relacionadas a las tareas. El inicio de sesión es simple: correo, contraseña y nombre.",
     stack: ["React + Vite", "Node.js", "Express", "MongoDB", "IA"],
-    github: "", // TODO: agregar URL del repositorio
-    demo: null, // TODO: agregar URL si está desplegado
+    github: "", 
+    demo: null, 
     portadaTipo: "imagen",
     portada: ltLogin,
     imagenes: [ltLogin, ltHome, ltHome1, ltCalendario, ltCalendario2, ltIA, ltIA2],
+    colorAcento: "#00eed1",
   },
   {
     id: "essenzaco",
@@ -89,11 +92,12 @@ const proyectos = [
     descripcionLarga:
       "EssenzaCo es una plataforma para una perfumería que permite al administrador gestionar clientes, proveedores, productos, empleados, ventas y compras (incluyendo el detalle de cada una) desde un dashboard con operaciones CRUD completas. También cuenta con una página principal donde los usuarios finales pueden explorar y comprar productos.",
     stack: ["Java EE", "GlassFish", "MySQL"],
-    github: "", // TODO: agregar URL del repositorio
-    demo: null, // TODO: agregar URL si está desplegado
+    github: "", 
+    demo: null, 
     portadaTipo: "imagen",
     portada: ecLogin,
     imagenes: [ecPrincipal, ecLogin, ecAdmin, ecProductos, ecCompras],
+    colorAcento: "#d4af37",
   },
   {
     id: "vetmed",
@@ -103,11 +107,12 @@ const proyectos = [
     descripcionLarga:
       "VetMed es una aplicación de escritorio que facilita el trabajo de una veterinaria a través de un dashboard donde se administran clientes, mascotas, consultas, citas, tratamientos, vacunaciones, veterinarios, medicamentos, recetas, facturas, compras, proveedores y empleados, todo con operaciones CRUD (agregar, editar, eliminar, buscar).",
     stack: ["JavaFX", "Scene Builder", "MySQL"],
-    github: "", // TODO: agregar URL del repositorio
+    github: "", 
     demo: null,
     portadaTipo: "imagen",
     portada: vmLogin,
     imagenes: [vmLogin, vmMenu, vmCrud1, vmCrud2, vmCrud3],
+    colorAcento: "#33ccff",
   },
   {
     id: "ecoapp",
@@ -126,6 +131,7 @@ const proyectos = [
       "/src/assets/ecoapp/foto1.png",
       "/src/assets/ecoapp/foto2.png",
     ],
+    colorAcento: "#22cc55",
   },
   {
     id: "ahorcado",
@@ -140,6 +146,7 @@ const proyectos = [
     portadaTipo: "imagen",
     portada: "/src/assets/ahorcado/portada.png",
     imagenes: ["/src/assets/ahorcado/portada.png", "/src/assets/ahorcado/foto1.png"],
+    colorAcento: "#ff3366",
   },
 ];
 

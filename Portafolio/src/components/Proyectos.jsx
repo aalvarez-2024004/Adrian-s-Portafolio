@@ -55,8 +55,7 @@ function ProyectoModal({ proyecto, onClose }) {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = "";
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [onClose]);
 
   const next = useCallback(() => {
     setImgIndex((i) => (i + 1) % proyecto.imagenes.length);
@@ -69,7 +68,11 @@ function ProyectoModal({ proyecto, onClose }) {
   }, [proyecto.imagenes.length]);
 
   return (
-    <div className="py-modal-overlay" onClick={onClose}>
+    <div 
+      className="py-modal-overlay" 
+      onClick={onClose}
+      style={{ "--py-dinamico": proyecto.colorAcento }}
+    >
       <div className="py-modal" onClick={(e) => e.stopPropagation()}>
         <div className="py-modal-header">
           <span>{proyecto.nombre}</span>
@@ -173,24 +176,22 @@ function Proyectos() {
   const isMobile = useIsMobile();
   const total = proyectos.length;
 
-  const wrapperRef = useRef(null); // define la zona de "enganche" del scroll
-  const stageRef = useRef(null); // la tarjeta protagonista que GSAP anima
+  const wrapperRef = useRef(null); 
+  const stageRef = useRef(null); 
   const mobileTrackRef = useRef(null);
 
-  const [displayIndex, setDisplayIndex] = useState(0); // que proyecto se ve ahora
+  const [displayIndex, setDisplayIndex] = useState(0); 
   const [modalProyecto, setModalProyecto] = useState(null);
 
-  // Refs para el estado interno del wheel-lock (no necesitan re-render)
   const lockedRef = useRef(false);
   const animatingRef = useRef(false);
   const wheelAccumRef = useRef(0);
-  const indexRef = useRef(0); // espejo sincrono de displayIndex, para leer dentro del listener
+  const indexRef = useRef(0); 
 
   useEffect(() => {
     indexRef.current = displayIndex;
   }, [displayIndex]);
 
-  /* --- Animacion de transicion entre proyectos (Apple-style) --- */
   const goToIndex = useCallback((nuevoIndex, direccion) => {
     const clamped = Math.max(0, Math.min(total - 1, nuevoIndex));
     if (clamped === indexRef.current || animatingRef.current) return;
@@ -230,7 +231,6 @@ function Proyectos() {
     });
   }, [total]);
 
-  /* --- Wheel-lock: intercepta el scroll mientras la seccion esta "enganchada" --- */
   useEffect(() => {
     if (isMobile) return;
 
@@ -238,7 +238,6 @@ function Proyectos() {
 
     const checkEngage = () => {
       const rect = wrapper.getBoundingClientRect();
-      // Considerado "enganchado" mientras el sticky lo mantiene pegado arriba
       lockedRef.current = Math.abs(rect.top) < 2;
     };
 
@@ -256,7 +255,6 @@ function Proyectos() {
       const atStart = indexRef.current === 0;
       const atEnd = indexRef.current === total - 1;
 
-      // En los bordes, deja pasar el scroll nativo para salir de la seccion
       if ((goingDown && atEnd) || (!goingDown && atStart)) {
         return;
       }
@@ -303,7 +301,7 @@ function Proyectos() {
     setDisplayIndex((prev) => (prev === nuevoIndex ? prev : nuevoIndex));
   }, []);
 
-  /* ---------- Mobile: scroll horizontal nativo con snap ---------- */
+  /* ---------- Mobile ---------- */
   if (isMobile) {
     return (
       <section className="proyectos-wrapper proyectos-wrapper--mobile" id="proyectos">
@@ -318,12 +316,7 @@ function Proyectos() {
         />
 
         <div className="proyectos-header">
-          <h2 className="proyectos-titulo">
-            VISTA DE
-            <br />
-            PROYECTOS
-          </h2>
-          <p className="proyectos-subtitulo">Capturas &amp; demostraciones</p>
+          <h2 className="proyectos-titulo">PROYECTOS</h2>
         </div>
 
         <div
@@ -332,7 +325,11 @@ function Proyectos() {
           onScroll={onTrackScrollMobile}
         >
           {proyectos.map((p) => (
-            <div key={p.id} className="py-card-mobile">
+            <div 
+              key={p.id} 
+              className="py-card-mobile"
+              style={{ "--py-dinamico": p.colorAcento }}
+            >
               <div className="py-card-imagen-wrap">
                 <Portada proyecto={p} className="py-card-imagen" />
               </div>
@@ -346,7 +343,7 @@ function Proyectos() {
                   className="py-ver-mas"
                   onClick={() => setModalProyecto(p)}
                 >
-                  Ver más
+                  Ver Detalles
                 </button>
               </div>
             </div>
@@ -361,6 +358,7 @@ function Proyectos() {
               className={`proyectos-dot ${i === displayIndex ? "proyectos-dot--activo" : ""}`}
               onClick={() => irAProyecto(i)}
               aria-label={`Ir a ${p.nombre}`}
+              style={{ "--py-dot-color": p.colorAcento }}
             />
           ))}
         </div>
@@ -372,13 +370,18 @@ function Proyectos() {
     );
   }
 
-  /* ---------- Desktop: slideshow protagonista, wheel-driven ---------- */
+  /* ---------- Desktop ---------- */
   const proyectoActual = proyectos[displayIndex];
   const proyectoAnterior = proyectos[displayIndex - 1];
   const proyectoSiguiente = proyectos[displayIndex + 1];
 
   return (
-    <section className="proyectos-wrapper" id="proyectos" ref={wrapperRef}>
+    <section 
+      className="proyectos-wrapper" 
+      id="proyectos" 
+      ref={wrapperRef}
+      style={{ "--py-dinamico": proyectoActual?.colorAcento || "#3355ff" }}
+    >
       <video
         className="proyectos-video-fondo"
         src={fondoVideo}
@@ -391,12 +394,7 @@ function Proyectos() {
 
       <div className="proyectos-pin">
         <div className="proyectos-header">
-          <h2 className="proyectos-titulo">
-            VISTA DE
-            <br />
-            PROYECTOS
-          </h2>
-          <p className="proyectos-subtitulo">Capturas &amp; demostraciones</p>
+          <h2 className="proyectos-titulo">PROYECTOS</h2>
         </div>
 
         <div className="proyectos-escenario">
@@ -421,7 +419,7 @@ function Proyectos() {
                 className="py-ver-mas"
                 onClick={() => setModalProyecto(proyectoActual)}
               >
-                Ver más
+                Ver Detalles
               </button>
             </div>
           </div>
@@ -441,6 +439,7 @@ function Proyectos() {
               className={`proyectos-dot ${i === displayIndex ? "proyectos-dot--activo" : ""}`}
               onClick={() => irAProyecto(i)}
               aria-label={`Ir a ${p.nombre}`}
+              style={{ "--py-dot-color": p.colorAcento }}
             />
           ))}
         </div>
