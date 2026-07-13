@@ -85,7 +85,6 @@ function Tecnologias() {
         opacity: angelOpacity,
       });
 
-      // Cada grupo aparece a partir de su turno y SE QUEDA visible (acumulativo)
       const nuevoEstado = GRUPOS.map((_, i) => {
         const op = Math.min(Math.max((pos - i + FADE_ZONE) / FADE_ZONE, 0), 1);
         return { opacity: op };
