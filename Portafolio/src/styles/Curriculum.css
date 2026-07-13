@@ -4,30 +4,30 @@
   width: 100%;
   background: #f8f9fa;
   font-family: "Poppins", sans-serif;
-  padding: 8rem 5vw;
+  padding: 4.5rem 5vw; /* Reducido de 8rem a 4.5rem */
   box-sizing: border-box;
   color: #111827;
 }
 
 .curriculum-header {
   max-width: 1300px;
-  margin: 0 auto 5rem;
+  margin: 0 auto 2.5rem; /* Reducido el espacio inferior a la mitad */
 }
 
 .curriculum-titulo {
   font-weight: 800;
   text-transform: uppercase;
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  line-height: 1;
+  font-size: clamp(2rem, 4vw, 3.5rem); /* Ajustado sutilmente el tamaño máximo */
+  line-height: 1.05;
   letter-spacing: -1.5px;
-  margin: 0 0 0.8rem 0;
+  margin: 0 0 0.5rem 0;
   color: #111827;
 }
 
 .curriculum-subtitulo {
   font-weight: 700;
   text-transform: uppercase;
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
   letter-spacing: 2px;
   color: #3355ff;
   margin: 0;
@@ -35,18 +35,18 @@
 
 .cv-acciones {
   display: flex;
-  gap: 1.2rem;
-  margin-top: 2.5rem;
+  gap: 1rem;
+  margin-top: 1.5rem; /* Reducido de 2.5rem a 1.5rem */
   flex-wrap: wrap;
 }
 
 .cv-btn {
   font-family: "Poppins", sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem; /* Botones más compactos y estilizados */
   border-radius: 6px;
   border: 2px solid #111827;
   cursor: pointer;
@@ -64,8 +64,8 @@
 .cv-btn--primary:hover {
   background: #3355ff;
   border-color: #3355ff;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(51, 85, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(51, 85, 255, 0.15);
 }
 
 .cv-btn--outline {
@@ -76,46 +76,44 @@
 .cv-btn--outline:hover {
   background: #111827;
   color: #ffffff;
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 /* --- Layout Principal (2x2) --- */
-
 .curriculum-grid {
   max-width: 1300px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 4rem 5rem;
+  gap: 2.5rem 4rem; /* Reducido drásticamente el espacio entre bloques y columnas */
 }
 
 .cv-columna-titulo {
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 0 0 0.6rem 0;
-  padding-bottom: 1rem;
+  margin: 0 0 0.5rem 0;
+  padding-bottom: 0.6rem; /* Más cerca de la línea divisoria */
   border-bottom: 2px solid #e5e7eb;
   color: #111827;
 }
 
 .cv-columna-lead {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   color: #6b7280;
-  margin: 0.6rem 0 1.8rem 0;
-  line-height: 1.6;
+  margin: 0.5rem 0 1.2rem 0;
+  line-height: 1.5;
 }
 
 /* --- Timeline Item --- */
-
 .cv-item {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  margin-bottom: 0.5rem;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  margin-bottom: 0;
 }
 
 .cv-item--visible {
@@ -131,11 +129,11 @@
 }
 
 .cv-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #3355ff;
-  margin-top: 5px;
+  margin-top: 4px;
   box-shadow: 0 0 0 4px rgba(51, 85, 255, 0.1);
 }
 
@@ -143,7 +141,7 @@
   flex: 1;
   width: 2px;
   background: #e5e7eb;
-  margin-top: 8px;
+  margin-top: 6px;
 }
 
 .cv-item:last-child .cv-line {
@@ -151,54 +149,54 @@
 }
 
 .cv-item-content {
-  padding-bottom: 3rem;
+  padding-bottom: 1.8rem; /* Reducido de 3rem a 1.8rem para juntar los bloques verticales */
   width: 100%;
 }
 
 .cv-eyebrow {
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: #3355ff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .cv-item-title {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 0.3rem 0;
   color: #111827;
+  line-height: 1.3;
 }
 
 .cv-item-subtitle {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #4b5563;
-  margin: 0 0 1rem 0;
-  line-height: 1.6;
+  margin: 0 0 0.8rem 0;
+  line-height: 1.5;
 }
 
 /* --- Tags / Píldoras --- */
-
 .cv-tags {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem; /* Etiquetas ligeramente más juntas */
 }
 
 .cv-tag {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.2px;
   background: #f3f4f6;
   color: #374151;
   border: 1px solid #e5e7eb;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+  padding: 0.3rem 0.65rem; /* Píldoras más delgadas y limpias */
+  border-radius: 5px;
   transition: all 0.2s ease;
 }
 
@@ -209,7 +207,6 @@
 }
 
 /* --- Habilidades Blandas (bloque dedicado) --- */
-
 .cv-skills-card {
   background: transparent;
   border: none;
@@ -217,10 +214,10 @@
   box-shadow: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.5rem;
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .cv-skills-card--visible {
@@ -231,8 +228,8 @@
 .cv-skill-item {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.5rem 0.85rem 0.5rem 0.5rem;
+  gap: 0.45rem;
+  padding: 0.4rem 0.75rem 0.4rem 0.4rem; /* Reducido relleno interno */
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 999px;
@@ -245,9 +242,9 @@
 }
 
 .cv-skill-icon {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
+  width: 22px; /* Reducido de 24px a 22px */
+  height: 22px;
+  min-width: 22px;
   border-radius: 50%;
   background: #eef1ff;
   color: #3355ff;
@@ -258,8 +255,8 @@
 }
 
 .cv-skill-icon svg {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
 }
 
 .cv-skill-item:hover .cv-skill-icon {
@@ -268,24 +265,23 @@
 }
 
 .cv-skill-label {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #111827;
   white-space: nowrap;
 }
 
 /* --- Listas y Enlaces --- */
-
 .cv-bullets {
   margin: 0;
-  padding-left: 1.2rem;
+  padding-left: 1.1rem;
 }
 
 .cv-bullets li {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: #4b5563;
-  margin-bottom: 0.6rem;
-  line-height: 1.6;
+  margin-bottom: 0.4rem; /* Reducido el espacio entre viñetas */
+  line-height: 1.5;
 }
 
 .cv-bullets li::marker {
@@ -295,12 +291,12 @@
 .cv-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
+  gap: 0.3rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #111827;
   text-decoration: none;
-  padding-bottom: 2px;
+  padding-bottom: 1px;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
 }
@@ -311,7 +307,6 @@
 }
 
 /* --- Modal --- */
-
 .cv-modal-overlay {
   position: fixed;
   inset: 0;
@@ -373,27 +368,30 @@
 }
 
 /* --- Responsive --- */
-
 @media (max-width: 1100px) {
   .curriculum-grid {
-    gap: 3.5rem;
+    gap: 2rem 2.5rem;
   }
 }
 
 @media (max-width: 900px) {
   .curriculum-grid {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 2.5rem;
+  }
+  .cv-item-content {
+    padding-bottom: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
   .curriculum-wrapper {
-    padding: 5rem 6vw;
+    padding: 3.5rem 6vw;
   }
 
   .cv-acciones {
     flex-direction: column;
+    gap: 0.8rem;
   }
 
   .cv-btn {
@@ -410,14 +408,14 @@
   .cv-skills-card {
     opacity: 1;
     transform: none;
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .cv-skill-item {
-    padding: 0.45rem 0.75rem 0.45rem 0.45rem;
+    padding: 0.35rem 0.65rem 0.35rem 0.35rem;
   }
 
   .cv-skill-label {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
   }
 }
