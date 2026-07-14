@@ -8,6 +8,10 @@ function SobreMi() {
         SOBRE MÍ.
       </h2>
 
+      <p className="sobremi-subtitulo">
+        Full Stack Developer
+      </p>
+
       <p className="sobremi-descripcion">
         Soy estudiante de último año para graduarme como{" "}
         <span className="highlight">Perito en Informática</span>, con la
