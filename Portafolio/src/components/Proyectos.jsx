@@ -270,6 +270,17 @@ function Proyectos() {
     reiniciarAutoplay(); // el usuario tomó el control: reinicia el conteo
   };
 
+  /* ---------- Flechas de navegación (solo desktop) ---------- */
+  const irAnterior = () => {
+    goToIndex(indexRef.current - 1, -1, true);
+    reiniciarAutoplay();
+  };
+
+  const irSiguiente = () => {
+    goToIndex(indexRef.current + 1, 1, true);
+    reiniciarAutoplay();
+  };
+
   const onTrackScrollMobile = useCallback(() => {
     const el = mobileTrackRef.current;
     if (!el) return;
@@ -375,6 +386,15 @@ function Proyectos() {
         </div>
 
         <div className="proyectos-escenario">
+          <button
+            type="button"
+            className="py-nav-arrow py-nav-arrow--izq"
+            onClick={irAnterior}
+            aria-label="Proyecto anterior"
+          >
+            ‹
+          </button>
+
           {proyectoAnterior && (
             <div className="py-peek py-peek--izq">
               <Portada proyecto={proyectoAnterior} className="py-peek-imagen" />
@@ -406,6 +426,15 @@ function Proyectos() {
               <Portada proyecto={proyectoSiguiente} className="py-peek-imagen" />
             </div>
           )}
+
+          <button
+            type="button"
+            className="py-nav-arrow py-nav-arrow--der"
+            onClick={irSiguiente}
+            aria-label="Siguiente proyecto"
+          >
+            ›
+          </button>
         </div>
 
         <div className="proyectos-dots">

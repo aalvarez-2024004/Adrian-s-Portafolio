@@ -44,14 +44,14 @@
 .proyectos-pin {
   position: relative;
   z-index: 2;
-  min-height: 100vh;
+  min-height: calc(100vh + 6rem);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 4rem 0 2rem;
+  padding: 6rem 0 3rem;
   box-sizing: border-box;
 }
 
@@ -89,6 +89,43 @@
   justify-content: center;
   gap: 2.5vw;
   overflow: hidden;
+}
+
+/* ---------- Flechas de navegación (desktop) ---------- */
+.py-nav-arrow {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.py-nav-arrow:hover {
+  background: var(--py-dinamico);
+  border-color: var(--py-dinamico);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.py-nav-arrow--izq {
+  left: clamp(0.5rem, 2vw, 2rem);
+}
+
+.py-nav-arrow--der {
+  right: clamp(0.5rem, 2vw, 2rem);
 }
 
 .py-stage {
