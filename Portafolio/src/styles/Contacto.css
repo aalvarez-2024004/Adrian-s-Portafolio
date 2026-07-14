@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Fraunces:ital,wght@0,600;1,500&display=swap");
+
+:root {
+  --ct-bg: #ffffff;
+  --ct-bg-soft: #f6f7f5;
+  --ct-ink: #14151a;
+  --ct-ink-suave: #5b5f6a;
+  --ct-linea: rgba(20, 21, 26, 0.08);
+  --ct-acento: #0a66c2;
+  --ct-acento-hover: #084f97;
+  --ct-acento-wash: #eaf2fc;
+  --ct-disponible: #1fae60;
+}
+
+.contacto-wrapper {
+  position: relative;
+  width: 100%;
+  background: var(--ct-bg);
+  font-family: "Poppins", sans-serif;
+  color: var(--ct-ink);
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vh, 4rem) 6vw;
+  box-sizing: border-box;
+}
+
+/* Halo suave detrás de la tarjeta, como resto de luz del apartado anterior */
+.contacto-wrapper::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: min(900px, 90vw);
+  height: 500px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    ellipse at center,
+    var(--ct-acento-wash) 0%,
+    rgba(234, 242, 252, 0) 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contacto-contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contacto-eyebrow {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--ct-acento);
+  margin-bottom: 1.1rem;
+}
+
+.contacto-titulo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 4.8vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 1.2rem;
+  color: var(--ct-ink);
+}
+
+.contacto-titulo em {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--ct-acento);
+}
+
+.contacto-texto {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ct-ink-suave);
+  max-width: 480px;
+  margin: 0 0 2.2rem;
+}
+
+/* ---------- Tarjeta de presentación (elemento firma) ---------- */
+.contacto-tarjeta-envoltura {
+  perspective: 1000px;
+  width: min(420px, 100%);
+}
+
+.contacto-tarjeta {
+  --ct-rx: 0deg;
+  --ct-ry: 0deg;
+  position: relative;
+  width: 100%;
+  background: var(--ct-bg-soft);
+  border: 1px solid var(--ct-linea);
+  border-radius: 18px;
+  padding: 2rem 2rem 1.7rem;
+  box-sizing: border-box;
+  text-align: left;
+  box-shadow: 0 30px 60px -20px rgba(20, 21, 26, 0.18),
+    0 8px 20px -8px rgba(20, 21, 26, 0.08);
+  transform: rotateX(var(--ct-rx)) rotateY(var(--ct-ry));
+  transition: transform 0.25s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.contacto-tarjeta-envoltura:hover .contacto-tarjeta {
+  box-shadow: 0 40px 70px -18px rgba(20, 21, 26, 0.22),
+    0 10px 24px -6px rgba(10, 102, 194, 0.15);
+}
+
+.contacto-tarjeta-borde {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ct-acento), #4d9bec);
+}
+
+.contacto-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ct-disponible);
+  background: rgba(31, 174, 96, 0.1);
+  padding: 0.35rem 0.7rem;
+  border-radius: 20px;
+  margin-bottom: 1.4rem;
+}
+
+.contacto-punto {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ct-disponible);
+  box-shadow: 0 0 0 0 rgba(31, 174, 96, 0.6);
+  animation: ct-pulso 2.2s infinite;
+}
+
+@keyframes ct-pulso {
+  0% {
+    box-shadow: 0 0 0 0 rgba(31, 174, 96, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(31, 174, 96, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(31, 174, 96, 0);
+  }
+}
+
+.contacto-perfil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.6rem;
+}
+
+.contacto-avatar {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--ct-acento), #4d9bec);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacto-nombre {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ct-ink);
+}
+
+.contacto-rol {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--ct-ink-suave);
+  margin-top: 0.15rem;
+}
+
+.contacto-boton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: var(--ct-acento);
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  padding: 0.85rem 1.2rem;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.contacto-boton:hover {
+  background: var(--ct-acento-hover);
+  transform: translateY(-2px);
+}
+
+.contacto-boton-icono {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.contacto-footer {
+  margin-top: 2.2rem;
+  font-size: 0.8rem;
+  color: var(--ct-ink-suave);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 480px) {
+  .contacto-tarjeta {
+    padding: 1.6rem 1.4rem 1.4rem;
+  }
+
+  .contacto-titulo {
+    letter-spacing: -0.3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contacto-punto {
+    animation: none;
+  }
+
+  .contacto-tarjeta {
+    transition: none;
+  }
+}
