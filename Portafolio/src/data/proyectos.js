@@ -1,5 +1,5 @@
 // ---------- Kinal Gourmet ----------
-import kgVideo from "../assets/kinalGourmet/KinalGourmet.mp4";
+import kgPortada from "../assets/kinalGourmet/KinalGourmet.png";
 import kgHome from "../assets/kinalGourmet/HomePage.png";
 import kgAdmin from "../assets/kinalGourmet/AdminKG.png";
 import kgAdminRest from "../assets/kinalGourmet/AdminRestKG.png";
@@ -13,9 +13,10 @@ import kbLogin from "../assets/kinalBank/LoginKB.png";
 import kbClient from "../assets/kinalBank/ClientBank.png";
 import kbAdmin from "../assets/kinalBank/AdminBank.png";
 import kbTransfer from "../assets/kinalBank/TransferKB.png";
-import kbVideo from "../assets/kinalBank/KinalBank.mp4";
+import kbPortada from "../assets/kinalBank/KinalBank.png";
 
 // ---------- LanaTasks ----------
+import ltPortada from "../assets/lanaTasks/lanaTaskPortada.png";
 import ltLogin from "../assets/lanaTasks/LoginLana.png";
 import ltHome from "../assets/lanaTasks/HomePage.png";
 import ltHome1 from "../assets/lanaTasks/HomePage1.png";
@@ -24,7 +25,9 @@ import ltCalendario2 from "../assets/lanaTasks/LanaCalendario2.png";
 import ltIA from "../assets/lanaTasks/LanaIA.png";
 import ltIA2 from "../assets/lanaTasks/LanaIA2.png";
 
+
 // ---------- EssenzaCo ----------
+import ecPortada from "../assets/essenzaCo/ecPortada.png";
 import ecLogin from "../assets/essenzaCo/EssezaLogin.png";
 import ecPrincipal from "../assets/essenzaCo/EssezaPrincipal.png";
 import ecAdmin from "../assets/essenzaCo/EssezaAdmin.png";
@@ -32,13 +35,40 @@ import ecProductos from "../assets/essenzaCo/EssezaProductos.png";
 import ecCompras from "../assets/essenzaCo/EssezaCompras.png";
 
 // ---------- VetMed ----------
+import vmPortada from "../assets/vetMed/vmPortada.png";
 import vmLogin from "../assets/vetMed/LoginVetMed.png";
 import vmMenu from "../assets/vetMed/MenuPrincipalVetMed.png";
 import vmCrud1 from "../assets/vetMed/CRUD1.png";
 import vmCrud2 from "../assets/vetMed/CRUD2.png";
 import vmCrud3 from "../assets/vetMed/CRUD3.png";
 
+// ---------- EcoApp ----------
+import eaPortada from "../assets/ecoApp/eaPortada.png";
+import eaLogin from "../assets/ecoApp/eaLogin.png";
+import eaAuth from "../assets/ecoApp/eaAuth.png";
+import eaHomePage from "../assets/ecoApp/eaHomePage.png";
+import eaIa from "../assets/ecoApp/eaIa.png";
+import eaForo from "../assets/ecoApp/eaForo.png";
+import eaGamificacion from "../assets/ecoApp/eaGamificacion.png";
+import eaMapa from "../assets/ecoApp/eaMapa.png";
+import eaEcoBot from "../assets/ecoApp/eaEcoBot.png";
+
 const proyectos = [
+    {
+    id: "ecoapp",
+    nombre: "EcoApp",
+    descripcionCorta:
+      "Plataforma de reciclaje asistida por IA con foro comunitario y gamificación.",
+    descripcionLarga:
+      "Plataforma web para fomentar el reciclaje mediante inteligencia artificial. Permite identificar el contenedor correcto a partir de una fotografía, además de ofrecer un foro comunitario, gamificación, estadísticas del impacto ambiental, un asistente con IA y un mapa con centros de reciclaje cercanos.",
+    stack: ["React + Vite", "Node.js", "Express", "MongoDB", "IA", "Google Maps"],
+    github: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
+    demo: "https://app-movil-eco-kinal.vercel.app/",
+    portadaTipo: "imagen",
+    portada: eaPortada,
+    imagenes: [eaLogin, eaAuth, eaHomePage, eaIa, eaForo, eaGamificacion, eaMapa, eaEcoBot],
+    colorAcento: "#22cc55",
+  },
   {
     id: "kinalgourmet",
     nombre: "Kinal Gourmet",
@@ -49,8 +79,8 @@ const proyectos = [
     stack: ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL"],
     github: "https://github.com/jrealiquez-2021549/AppMovil-SistemaRestaurante/tree/ftrealiquez-2021549",
     demo: "https://kinal-gourmet-web.vercel.app/",
-    portadaTipo: "video",
-    portada: kgVideo,
+    portadaTipo: "imagen",
+    portada: kgPortada,
     imagenes: [kgHome, kgAdmin, kgAdminRest, kgAdminRest1, kg1, kg2, kg3],
     colorAcento: "#ff6b00",
   },
@@ -64,8 +94,8 @@ const proyectos = [
     stack: ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL", "Exchange API"],
     github: "https://github.com/aalvarez-2024004/AppMovil-SistemaBancario/tree/ftaalvarez-2024004",
     demo: "https://app-movil-sistema-bancario-hfca.vercel.app/",
-    portadaTipo: "video",
-    portada: kbVideo,
+    portadaTipo: "imagen",
+    portada: kbPortada,
     imagenes: [kbLogin, kbClient, kbAdmin, kbTransfer],
     colorAcento: "#2277ff",
   },
@@ -80,7 +110,7 @@ const proyectos = [
     github: "", 
     demo: null, 
     portadaTipo: "imagen",
-    portada: ltLogin,
+    portada: ltPortada,
     imagenes: [ltLogin, ltHome, ltHome1, ltCalendario, ltCalendario2, ltIA, ltIA2],
     colorAcento: "#00eed1",
   },
@@ -95,7 +125,7 @@ const proyectos = [
     github: "", 
     demo: null, 
     portadaTipo: "imagen",
-    portada: ecLogin,
+    portada: ecPortada,
     imagenes: [ecPrincipal, ecLogin, ecAdmin, ecProductos, ecCompras],
     colorAcento: "#d4af37",
   },
@@ -110,43 +140,9 @@ const proyectos = [
     github: "", 
     demo: null,
     portadaTipo: "imagen",
-    portada: vmLogin,
+    portada: vmPortada,
     imagenes: [vmLogin, vmMenu, vmCrud1, vmCrud2, vmCrud3],
     colorAcento: "#33ccff",
-  },
-  {
-    id: "ecoapp",
-    nombre: "EcoApp",
-    descripcionCorta:
-      "Plataforma de reciclaje asistida por IA con foro comunitario y gamificación.",
-    descripcionLarga:
-      "Plataforma web para fomentar el reciclaje mediante inteligencia artificial. Permite identificar el contenedor correcto a partir de una fotografía, además de ofrecer un foro comunitario, gamificación, estadísticas del impacto ambiental, un asistente con IA y un mapa con centros de reciclaje cercanos.",
-    stack: ["React + Vite", "Node.js", "Express", "MongoDB", "IA", "Google Maps"],
-    github: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
-    demo: null,
-    portadaTipo: "imagen",
-    portada: "/src/assets/ecoapp/portada.png",
-    imagenes: [
-      "/src/assets/ecoapp/portada.png",
-      "/src/assets/ecoapp/foto1.png",
-      "/src/assets/ecoapp/foto2.png",
-    ],
-    colorAcento: "#22cc55",
-  },
-  {
-    id: "ahorcado",
-    nombre: "Juego del Ahorcado",
-    descripcionCorta:
-      "Juego web interactivo con pistas y progreso guardado en MySQL.",
-    descripcionLarga:
-      "Aplicación web interactiva desarrollada como proyecto académico. Obtiene palabras desde una base de datos MySQL, ofrece pistas al jugador y registra el progreso de la partida.",
-    stack: ["JavaScript", "HTML", "CSS", "MySQL"],
-    github: "https://github.com/aalvarez-2024004/ProyectoFinal4toBim.git",
-    demo: null,
-    portadaTipo: "imagen",
-    portada: "/src/assets/ahorcado/portada.png",
-    imagenes: ["/src/assets/ahorcado/portada.png", "/src/assets/ahorcado/foto1.png"],
-    colorAcento: "#ff3366",
   },
 ];
 
