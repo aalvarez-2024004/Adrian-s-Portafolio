@@ -68,8 +68,8 @@ function ProyectoModal({ proyecto, onClose }) {
   }, [proyecto.imagenes.length]);
 
   return (
-    <div 
-      className="py-modal-overlay" id="py-modal-overlay" 
+    <div
+      className="py-modal-overlay" id="py-modal-overlay"
       onClick={onClose}
       style={{ "--py-dinamico": proyecto.colorAcento }}
     >
@@ -152,7 +152,7 @@ function ProyectoModal({ proyecto, onClose }) {
                   Ver repositorio
                 </a>
               ) : null}
-              
+
               {proyecto.demo ? (
                 <a
                   href={proyecto.demo}
@@ -172,28 +172,33 @@ function ProyectoModal({ proyecto, onClose }) {
 }
 
 /* ---------- Sección principal ---------- */
+const AUTOPLAY_MS = 12000; // entre 10 y 15 segundos
+
 function Proyectos() {
   const isMobile = useIsMobile();
   const total = proyectos.length;
 
-  const wrapperRef = useRef(null); 
-  const stageRef = useRef(null); 
+  const wrapperRef = useRef(null);
+  const stageRef = useRef(null);
   const mobileTrackRef = useRef(null);
 
-  const [displayIndex, setDisplayIndex] = useState(0); 
+  const [displayIndex, setDisplayIndex] = useState(0);
   const [modalProyecto, setModalProyecto] = useState(null);
 
-  const lockedRef = useRef(false);
   const animatingRef = useRef(false);
-  const wheelAccumRef = useRef(0);
-  const indexRef = useRef(0); 
+  const indexRef = useRef(0);
+  const autoplayTimerRef = useRef(null);
 
   useEffect(() => {
     indexRef.current = displayIndex;
   }, [displayIndex]);
 
-  const goToIndex = useCallback((nuevoIndex, direccion) => {
-    const clamped = Math.max(0, Math.min(total - 1, nuevoIndex));
+  // wrap = true permite volver al inicio al pasar del último proyecto
+  const goToIndex = useCallback((nuevoIndex, direccion, wrap = false) => {
+    const clamped = wrap
+      ? ((nuevoIndex % total) + total) % total
+      : Math.max(0, Math.min(total - 1, nuevoIndex));
+
     if (clamped === indexRef.current || animatingRef.current) return;
 
     animatingRef.current = true;
@@ -231,54 +236,25 @@ function Proyectos() {
     });
   }, [total]);
 
+  /* ---------- Auto-avance cada 10/15 segundos (solo desktop) ---------- */
+  const reiniciarAutoplay = useCallback(() => {
+    if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
+    autoplayTimerRef.current = setInterval(() => {
+      if (animatingRef.current) return;
+      goToIndex(indexRef.current + 1, 1, true);
+    }, AUTOPLAY_MS);
+  }, [goToIndex]);
+
   useEffect(() => {
     if (isMobile) return;
+    if (total <= 1) return;
 
-    const wrapper = wrapperRef.current;
-
-    const checkEngage = () => {
-      const rect = wrapper.getBoundingClientRect();
-      lockedRef.current = Math.abs(rect.top) < 2;
-    };
-
-    const onScroll = () => checkEngage();
-
-    const onWheel = (e) => {
-      if (!lockedRef.current) return;
-
-      if (animatingRef.current) {
-        e.preventDefault();
-        return;
-      }
-
-      const goingDown = e.deltaY > 0;
-      const atStart = indexRef.current === 0;
-      const atEnd = indexRef.current === total - 1;
-
-      if ((goingDown && atEnd) || (!goingDown && atStart)) {
-        return;
-      }
-
-      e.preventDefault();
-      wheelAccumRef.current += e.deltaY;
-
-      const THRESHOLD = 55;
-      if (Math.abs(wheelAccumRef.current) > THRESHOLD) {
-        const dir = wheelAccumRef.current > 0 ? 1 : -1;
-        wheelAccumRef.current = 0;
-        goToIndex(indexRef.current + dir, dir);
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("wheel", onWheel, { passive: false });
-    checkEngage();
+    reiniciarAutoplay();
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("wheel", onWheel);
+      if (autoplayTimerRef.current) clearInterval(autoplayTimerRef.current);
     };
-  }, [isMobile, total, goToIndex]);
+  }, [isMobile, total, reiniciarAutoplay]);
 
   const irAProyecto = (i) => {
     if (isMobile) {
@@ -291,6 +267,7 @@ function Proyectos() {
     }
     const dir = i > indexRef.current ? 1 : -1;
     goToIndex(i, dir);
+    reiniciarAutoplay(); // el usuario tomó el control: reinicia el conteo
   };
 
   const onTrackScrollMobile = useCallback(() => {
@@ -325,8 +302,8 @@ function Proyectos() {
           onScroll={onTrackScrollMobile}
         >
           {proyectos.map((p) => (
-            <div 
-              key={p.id} 
+            <div
+              key={p.id}
               className="py-card-mobile"
               style={{ "--py-dinamico": p.colorAcento }}
             >
@@ -376,9 +353,9 @@ function Proyectos() {
   const proyectoSiguiente = proyectos[displayIndex + 1];
 
   return (
-    <section 
-      className="proyectos-wrapper" 
-      id="proyectos" 
+    <section
+      className="proyectos-wrapper"
+      id="proyectos"
       ref={wrapperRef}
       style={{ "--py-dinamico": proyectoActual?.colorAcento || "#3355ff" }}
     >

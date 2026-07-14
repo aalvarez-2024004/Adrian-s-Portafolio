@@ -1,0 +1,170 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=JetBrains+Mono:wght@500&display=swap");
+
+:root {
+  --nav-blanco: #ffffff;
+  --nav-negro: #0a0a0a;
+  --nav-gris: rgba(10, 10, 10, 0.55);
+  --nav-linea: rgba(10, 10, 10, 0.08);
+  --nav-acento: #4f8cff;
+  --nav-acento-2: #8b5cf6;
+  --nav-gradiente: linear-gradient(90deg, var(--nav-acento), var(--nav-acento-2));
+  --nav-alto: 76px;
+}
+
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: var(--nav-blanco);
+  font-family: "Poppins", sans-serif;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s ease, border-color 0.3s ease;
+  transform: translateY(0);
+  border-bottom: 1px solid transparent;
+}
+
+.navbar-visible {
+  transform: translateY(0);
+}
+
+.navbar-oculto {
+  transform: translateY(-100%);
+}
+
+.navbar-con-fondo {
+  border-bottom-color: var(--nav-linea);
+  box-shadow: 0 8px 24px -18px rgba(10, 10, 10, 0.25);
+}
+
+.navbar-contenido {
+  max-width: 1180px;
+  height: var(--nav-alto);
+  margin: 0 auto;
+  padding: 0 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---------- Logo ---------- */
+.navbar-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--nav-negro);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.3px;
+}
+
+.navbar-logo::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 3px;
+  background: var(--nav-gradiente);
+  flex-shrink: 0;
+}
+
+/* ---------- Links de escritorio ---------- */
+.navbar-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 2.1rem;
+}
+
+.navbar-link {
+  position: relative;
+  color: var(--nav-negro);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.94rem;
+  padding: 0.3rem 0;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--nav-gradiente);
+  transition: width 0.22s ease;
+}
+
+.navbar-link:hover {
+  opacity: 0.6;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* ---------- Botón de menú móvil ---------- */
+.navbar-menu-boton {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--nav-linea);
+  background: var(--nav-blanco);
+  color: var(--nav-negro);
+  cursor: pointer;
+}
+
+.navbar-menu-icono {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- Menú móvil desplegable ---------- */
+.navbar-links-movil {
+  display: none;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  background: var(--nav-blanco);
+  border-top: 1px solid transparent;
+  transition: max-height 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar-links-movil-abierto {
+  max-height: 420px;
+  border-top-color: var(--nav-linea);
+}
+
+.navbar-link-movil {
+  color: var(--nav-negro);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.95rem 6vw;
+  border-bottom: 1px solid var(--nav-linea);
+}
+
+.navbar-link-movil:active {
+  opacity: 0.6;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .navbar-links-desktop {
+    display: none;
+  }
+
+  .navbar-menu-boton {
+    display: inline-flex;
+  }
+
+  .navbar-links-movil {
+    display: flex;
+  }
+}

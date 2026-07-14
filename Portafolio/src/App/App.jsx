@@ -1,3 +1,4 @@
+import NavBar from "../components/NavBar";
 import Bienvenida from "../components/Bienvenida";
 import SobreMi from "../components/SobreMi";
 import DatosGenerales from "../components/DatosGenerales";
@@ -10,6 +11,7 @@ import Footer from "../components/Footer";
 function App() {
   return (
     <>
+      <NavBar />
       <Bienvenida />
       <SobreMi />
       <DatosGenerales />
