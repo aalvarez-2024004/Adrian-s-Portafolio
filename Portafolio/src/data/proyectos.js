@@ -98,7 +98,7 @@ const proyectos = [
     portada: kbPortada,
     imagenes: [kbLogin, kbClient, kbAdmin, kbTransfer],
     colorAcento: "#2277ff",
-  },
+  },  
   {
     id: "lanatasks",
     nombre: "LanaTasks",
@@ -115,21 +115,6 @@ const proyectos = [
     colorAcento: "#00eed1",
   },
   {
-    id: "essenzaco",
-    nombre: "EssenzaCo",
-    descripcionCorta:
-      "Sistema administrativo para una perfumería: clientes, proveedores, ventas y compras.",
-    descripcionLarga:
-      "EssenzaCo es una plataforma para una perfumería que permite al administrador gestionar clientes, proveedores, productos, empleados, ventas y compras (incluyendo el detalle de cada una) desde un dashboard con operaciones CRUD completas. También cuenta con una página principal donde los usuarios finales pueden explorar y comprar productos.",
-    stack: ["Java EE", "GlassFish", "MySQL"],
-    github: "", 
-    demo: null, 
-    portadaTipo: "imagen",
-    portada: ecPortada,
-    imagenes: [ecPrincipal, ecLogin, ecAdmin, ecProductos, ecCompras],
-    colorAcento: "#d4af37",
-  },
-  {
     id: "vetmed",
     nombre: "VetMed",
     descripcionCorta:
@@ -144,6 +129,21 @@ const proyectos = [
     imagenes: [vmLogin, vmMenu, vmCrud1, vmCrud2, vmCrud3],
     colorAcento: "#33ccff",
   },
+  {
+    id: "essenzaco",
+    nombre: "EssenzaCo",
+    descripcionCorta:
+      "Sistema administrativo para una perfumería: clientes, proveedores, ventas y compras.",
+    descripcionLarga:
+      "EssenzaCo es una plataforma para una perfumería que permite al administrador gestionar clientes, proveedores, productos, empleados, ventas y compras (incluyendo el detalle de cada una) desde un dashboard con operaciones CRUD completas. También cuenta con una página principal donde los usuarios finales pueden explorar y comprar productos.",
+    stack: ["Java EE", "GlassFish", "MySQL"],
+    github: "", 
+    demo: null, 
+    portadaTipo: "imagen",
+    portada: ecPortada,
+    imagenes: [ecPrincipal, ecLogin, ecAdmin, ecProductos, ecCompras],
+    colorAcento: "#d4af37",
+  },  
 ];
 
 export default proyectos;
