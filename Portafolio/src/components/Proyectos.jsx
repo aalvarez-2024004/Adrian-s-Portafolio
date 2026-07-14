@@ -69,7 +69,7 @@ function ProyectoModal({ proyecto, onClose }) {
 
   return (
     <div 
-      className="py-modal-overlay" 
+      className="py-modal-overlay" id="py-modal-overlay" 
       onClick={onClose}
       style={{ "--py-dinamico": proyecto.colorAcento }}
     >

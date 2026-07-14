@@ -118,6 +118,7 @@ function Tecnologias() {
   return (
     <section
       className="tecnologias-wrapper"
+      id="tecnologias"
       ref={wrapperRef}
       style={{ height: isDesktop ? `${N * 100}vh` : "auto" }}
     >

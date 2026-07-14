@@ -5,6 +5,7 @@ import Tecnologias from "../components/Tecnologias";
 import Curriculum from "../components/Curriculum";
 import Proyectos from "../components/Proyectos";
 import Contacto from "../components/Contacto";
+import Footer from "../components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Curriculum />
       <Proyectos />
       <Contacto />
+      <Footer />
     </>
   );
 }

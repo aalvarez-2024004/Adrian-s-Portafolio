@@ -5,7 +5,7 @@ import videoFondo from "../assets/FondoBienvenida.mp4";
 
 function Bienvenida() {
   return (
-    <section className="hero">
+    <section className="hero" id="inicio">
       <video
         className="hero-video"
         src={videoFondo}

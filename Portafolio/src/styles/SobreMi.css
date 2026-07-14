@@ -41,7 +41,7 @@
   font-size: clamp(1.1rem, 2vw, 1.6rem);
   letter-spacing: 1px;
   margin: -1.5rem 0 2rem 0;
-}
+} 
 
 .sobremi-descripcion {
   max-width: 850px;
