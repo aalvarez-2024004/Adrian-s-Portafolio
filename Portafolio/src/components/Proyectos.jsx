@@ -395,11 +395,15 @@ function Proyectos() {
             ‹
           </button>
 
-          {proyectoAnterior && (
-            <div className="py-peek py-peek--izq">
+          <div
+            className={`py-peek py-peek--izq ${
+              !proyectoAnterior ? "py-peek--vacio" : ""
+            }`}
+          >
+            {proyectoAnterior && (
               <Portada proyecto={proyectoAnterior} className="py-peek-imagen" />
-            </div>
-          )}
+            )}
+          </div>
 
           <div className="py-stage" ref={stageRef}>
             <div className="py-card-imagen-wrap">
@@ -421,11 +425,15 @@ function Proyectos() {
             </div>
           </div>
 
-          {proyectoSiguiente && (
-            <div className="py-peek py-peek--der">
+          <div
+            className={`py-peek py-peek--der ${
+              !proyectoSiguiente ? "py-peek--vacio" : ""
+            }`}
+          >
+            {proyectoSiguiente && (
               <Portada proyecto={proyectoSiguiente} className="py-peek-imagen" />
-            </div>
-          )}
+            )}
+          </div>
 
           <button
             type="button"

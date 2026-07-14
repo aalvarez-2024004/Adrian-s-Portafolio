@@ -157,6 +157,14 @@
   display: block;
 }
 
+/* Mantiene el espacio reservado cuando no hay proyecto anterior/siguiente,
+   para que la tarjeta central no se descentre en los extremos */
+.py-peek--vacio {
+  visibility: hidden;
+  border-color: transparent;
+  box-shadow: none;
+}
+
 video.py-peek-imagen {
   pointer-events: none;
   background: #000;
