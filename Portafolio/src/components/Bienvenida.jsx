@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../styles/Bienvenida.css";
-import fotoPerfil from "../assets/FotoBienvenida.jpg";
+import fotoPerfil from "../assets/FotoBienvenida.jpeg";
 import videoFondo from "../assets/FondoBienvenida.mp4";
 
 function Bienvenida() {
