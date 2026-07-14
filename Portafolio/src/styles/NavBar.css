@@ -106,6 +106,56 @@
   width: 100%;
 }
 
+/* ---------- Ícono LinkedIn (desktop) ---------- */
+.navbar-social {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--nav-blanco);
+  border: 1px solid var(--nav-linea);
+  color: var(--nav-negro);
+  margin-left: 0.4rem;
+  flex-shrink: 0;
+  transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.navbar-social::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 10px;
+  padding: 1px;
+  background: var(--nav-gradiente);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.navbar-social:hover {
+  color: var(--nav-acento);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px -10px rgba(79, 140, 255, 0.45);
+}
+
+.navbar-social:hover::before {
+  opacity: 1;
+}
+
+.navbar-social-icono {
+  width: 17px;
+  height: 17px;
+  position: relative;
+  z-index: 1;
+}
+
 /* ---------- Botón de menú móvil ---------- */
 .navbar-menu-boton {
   display: none;
@@ -137,7 +187,7 @@
 }
 
 .navbar-links-movil-abierto {
-  max-height: 420px;
+  max-height: 480px;
   border-top-color: var(--nav-linea);
 }
 
@@ -152,6 +202,28 @@
 
 .navbar-link-movil:active {
   opacity: 0.6;
+}
+
+/* ---------- Ícono LinkedIn (móvil) ---------- */
+.navbar-social-movil {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--nav-negro);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.95rem 6vw;
+}
+
+.navbar-social-movil:active {
+  opacity: 0.6;
+}
+
+.navbar-social-movil .navbar-social-icono {
+  width: 18px;
+  height: 18px;
+  color: var(--nav-acento);
 }
 
 /* ---------- Responsive ---------- */

@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "../styles/Navbar.css";
 
+const LINKEDIN_URL = "https://www.linkedin.com/in/adrian-alvarez-665290311";
+
 const ENLACES_NAV = [
   { label: "Inicio", href: "#inicio" },
   { label: "Sobre mí", href: "#sobremi" },
@@ -32,6 +34,20 @@ function IconMenu({ abierto, className }) {
   );
 }
 
+/* ---------- Icono LinkedIn (idéntico al del footer) ---------- */
+function IconLinkedIn({ className }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+    </svg>
+  );
+}
+
 function Navbar() {
   const [visible, setVisible] = useState(true);
   const [conFondo, setConFondo] = useState(false);
@@ -42,7 +58,6 @@ function Navbar() {
     const manejarScroll = () => {
       const actual = window.scrollY;
       const bajando = actual > ultimaPosicion.current;
-      const pasoUmbral = actual > 80;
 
       setConFondo(actual > 8);
 
@@ -51,7 +66,11 @@ function Navbar() {
         return;
       }
 
-      if (bajando && pasoUmbral) {
+      // En la cima siempre visible; al bajar se oculta de inmediato,
+      // al subir reaparece de inmediato.
+      if (actual <= 0) {
+        setVisible(true);
+      } else if (bajando) {
         setVisible(false);
       } else {
         setVisible(true);
@@ -83,6 +102,16 @@ function Navbar() {
               {enlace.label}
             </a>
           ))}
+
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="navbar-social"
+            aria-label="LinkedIn"
+          >
+            <IconLinkedIn className="navbar-social-icono" />
+          </a>
         </nav>
 
         <button
@@ -107,6 +136,17 @@ function Navbar() {
             {enlace.label}
           </a>
         ))}
+
+        <a
+          href={LINKEDIN_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="navbar-social-movil"
+          onClick={cerrarMenu}
+        >
+          <IconLinkedIn className="navbar-social-icono" />
+          LinkedIn
+        </a>
       </nav>
     </header>
   );
