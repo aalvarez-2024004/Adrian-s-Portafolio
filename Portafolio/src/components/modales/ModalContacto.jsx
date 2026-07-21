@@ -79,85 +79,84 @@ function ModalContacto({ abierto, onCerrar }) {
 
   return (
     <div
-      className="modal-fondo"
+      className="mc-fondo"
       onMouseDown={(e) => {
         if (e.target === e.currentTarget) limpiarYCerrar();
       }}
     >
-      <div className="modal-caja" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
-        <button
-          type="button"
-          className="modal-cerrar"
-          onClick={limpiarYCerrar}
-          aria-label="Cerrar"
-        >
+      <div className="mc-caja" role="dialog" aria-modal="true" aria-labelledby="mc-titulo">
+        <span className="mc-borde-superior" />
+
+        <button type="button" className="mc-cerrar" onClick={limpiarYCerrar} aria-label="Cerrar">
           ×
         </button>
 
         {estado === "enviado" ? (
-          <div className="modal-exito">
-            <div className="modal-exito-icono">✓</div>
-            <h3 id="modal-titulo">Mensaje enviado</h3>
+          <div className="mc-exito">
+            <div className="mc-exito-icono">✓</div>
+            <h3 id="mc-titulo">Mensaje enviado</h3>
             <p>Gracias por escribirme, te responderé lo antes posible.</p>
-            <button type="button" className="modal-boton" onClick={limpiarYCerrar}>
+            <button type="button" className="mc-boton" onClick={limpiarYCerrar}>
               Cerrar
             </button>
           </div>
         ) : (
-          <form className="modal-form" onSubmit={enviarFormulario}>
-            <h3 id="modal-titulo" className="modal-titulo">
+          <form className="mc-form" onSubmit={enviarFormulario}>
+            <h3 id="mc-titulo" className="mc-titulo">
               Enviar un mensaje
             </h3>
-            <p className="modal-subtitulo">
+            <p className="mc-subtitulo">
               Te responderé directamente al correo que dejes aquí.
             </p>
 
-            <label className="modal-etiqueta" htmlFor="campo-titulo">
-              Título
-            </label>
-            <input
-              id="campo-titulo"
-              ref={primerCampoRef}
-              className="modal-input"
-              type="text"
-              placeholder="Ej. Oportunidad de proyecto"
-              value={titulo}
-              onChange={(e) => setTitulo(e.target.value)}
-              maxLength={100}
-            />
+            <div className="mc-campo">
+              <label className="mc-etiqueta" htmlFor="campo-titulo">
+                Título
+              </label>
+              <input
+                id="campo-titulo"
+                ref={primerCampoRef}
+                className="mc-input"
+                type="text"
+                placeholder="Ej. Oportunidad de proyecto"
+                value={titulo}
+                onChange={(e) => setTitulo(e.target.value)}
+                maxLength={100}
+              />
+            </div>
 
-            <label className="modal-etiqueta" htmlFor="campo-correo">
-              Tu correo
-            </label>
-            <input
-              id="campo-correo"
-              className="modal-input"
-              type="email"
-              placeholder="tucorreo@ejemplo.com"
-              value={correo}
-              onChange={(e) => setCorreo(e.target.value)}
-            />
+            <div className="mc-campo">
+              <label className="mc-etiqueta" htmlFor="campo-correo">
+                Tu correo
+              </label>
+              <input
+                id="campo-correo"
+                className="mc-input"
+                type="email"
+                placeholder="tucorreo@ejemplo.com"
+                value={correo}
+                onChange={(e) => setCorreo(e.target.value)}
+              />
+            </div>
 
-            <label className="modal-etiqueta" htmlFor="campo-mensaje">
-              Mensaje
-            </label>
-            <textarea
-              id="campo-mensaje"
-              className="modal-textarea"
-              placeholder="Cuéntame en qué estás pensando..."
-              value={mensaje}
-              onChange={(e) => setMensaje(e.target.value)}
-              rows={5}
-              maxLength={2000}
-            />
+            <div className="mc-campo">
+              <label className="mc-etiqueta" htmlFor="campo-mensaje">
+                Mensaje
+              </label>
+              <textarea
+                id="campo-mensaje"
+                className="mc-textarea"
+                placeholder="Cuéntame en qué estás pensando..."
+                value={mensaje}
+                onChange={(e) => setMensaje(e.target.value)}
+                rows={5}
+                maxLength={2000}
+              />
+            </div>
 
-            {error && <p className="modal-error">{error}</p>}
+            {error && <p className="mc-error">{error}</p>}
 
-            <button
-              type="submit"
-              className="modal-boton"
-              disabled={estado === "enviando"}
-            >
+            <button type="submit" className="mc-boton" disabled={estado === "enviando"}>
               {estado === "enviando" ? "Enviando..." : "Enviar mensaje"}
             </button>
           </form>

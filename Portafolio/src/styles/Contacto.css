@@ -43,7 +43,7 @@
 .contacto-contenido {
   position: relative;
   z-index: 1;
-  max-width: 720px;
+  max-width: 920px;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -82,62 +82,66 @@
   line-height: 1.6;
   color: var(--ct-ink-suave);
   max-width: 480px;
-  margin: 0 0 2.2rem;
+  margin: 0 0 2.4rem;
 }
 
-.contacto-tarjeta-envoltura {
-  perspective: 1000px;
-  width: min(460px, 100%);
-}
-
-.contacto-tarjeta {
-  --ct-rx: 0deg;
-  --ct-ry: 0deg;
-  position: relative;
-  width: 100%;
+/* ---------- Línea de perfil (arriba de los bloques) ---------- */
+.contacto-perfil {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 2.2rem;
+  padding: 0.6rem 1.1rem 0.6rem 0.6rem;
   background: var(--ct-bg-soft);
   border: 1px solid var(--ct-linea);
-  border-radius: 18px;
-  padding: 2rem 2rem 1.7rem;
-  box-sizing: border-box;
+  border-radius: 999px;
+}
+
+.contacto-avatar {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ct-acento), #4d9bec);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contacto-nombre {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ct-ink);
   text-align: left;
-  box-shadow: 0 30px 60px -20px rgba(20, 21, 26, 0.18),
-    0 8px 20px -8px rgba(20, 21, 26, 0.08);
-  transform: rotateX(var(--ct-rx)) rotateY(var(--ct-ry));
-  transition: transform 0.25s ease, box-shadow 0.3s ease;
-  overflow: hidden;
 }
 
-.contacto-tarjeta-envoltura:hover .contacto-tarjeta {
-  box-shadow: 0 40px 70px -18px rgba(20, 21, 26, 0.22),
-    0 10px 24px -6px rgba(10, 102, 194, 0.15);
-}
-
-.contacto-tarjeta-borde {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--ct-acento), #4d9bec);
+.contacto-rol {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--ct-ink-suave);
+  text-align: left;
 }
 
 .contacto-estado {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
+  gap: 0.4rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--ct-disponible);
   background: rgba(31, 174, 96, 0.1);
-  padding: 0.35rem 0.7rem;
+  padding: 0.32rem 0.65rem;
   border-radius: 20px;
-  margin-bottom: 1.4rem;
+  margin-left: 0.4rem;
 }
 
 .contacto-punto {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--ct-disponible);
   box-shadow: 0 0 0 0 rgba(31, 174, 96, 0.6);
@@ -156,104 +160,141 @@
   }
 }
 
-.contacto-perfil {
+/* ---------- 4 bloques independientes ---------- */
+.contacto-bloques {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.1rem;
+  width: 100%;
 }
 
-.contacto-avatar {
-  flex-shrink: 0;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--ct-acento), #4d9bec);
-  color: #fff;
-  font-weight: 700;
-  font-size: 1.05rem;
+.contacto-bloque {
+  position: relative;
+  flex: 1 1 190px;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  background: var(--ct-bg-soft);
+  border: 1px solid var(--ct-linea);
+  border-radius: 16px;
+  padding: 1.5rem 1.3rem 1.3rem;
+  text-decoration: none;
+  color: var(--ct-ink);
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 20px 40px -24px rgba(20, 21, 26, 0.18);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.contacto-bloque-borde {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--ct-acento), #4d9bec);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.contacto-bloque:hover {
+  transform: translateY(-4px);
+  border-color: var(--ct-acento);
+  box-shadow: 0 26px 50px -20px rgba(10, 102, 194, 0.22);
+}
+
+.contacto-bloque:hover .contacto-bloque-borde {
+  opacity: 1;
+}
+
+.contacto-bloque-icono-envoltura {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: var(--ct-acento-wash);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.contacto-nombre {
-  display: block;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--ct-ink);
-}
-
-.contacto-rol {
-  display: block;
-  font-size: 0.85rem;
-  color: var(--ct-ink-suave);
-  margin-top: 0.15rem;
-}
-
-/* ---------- Grid de 4 tarjetas (correo, linkedin, github, instagram) ---------- */
-.contacto-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.7rem;
-}
-
-.contacto-mini {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.4rem;
-  background: var(--ct-bg);
-  border: 1px solid var(--ct-linea);
-  border-radius: 12px;
-  padding: 0.95rem 1rem;
-  text-decoration: none;
-  color: var(--ct-ink);
-  font-family: "Poppins", sans-serif;
-  cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.15s ease, background 0.2s ease;
-}
-
-.contacto-mini:hover {
-  border-color: var(--ct-acento);
-  background: var(--ct-acento-wash);
-  transform: translateY(-2px);
-}
-
-.contacto-mini-icono {
+.contacto-bloque-icono {
   width: 20px;
   height: 20px;
   color: var(--ct-acento);
 }
 
-.contacto-mini-nombre {
+.contacto-bloque-nombre {
   font-weight: 700;
-  font-size: 0.92rem;
+  font-size: 0.98rem;
 }
 
-.contacto-mini-detalle {
-  font-size: 0.76rem;
-  color: var(--ct-ink-suave);
-}
-
-.contacto-footer {
-  margin-top: 2.2rem;
-  font-size: 0.8rem;
+.contacto-bloque-detalle {
+  font-size: 0.78rem;
   color: var(--ct-ink-suave);
 }
 
 /* ---------- Responsive ---------- */
-@media (max-width: 480px) {
-  .contacto-tarjeta {
-    padding: 1.6rem 1.4rem 1.4rem;
+@media (max-width: 720px) {
+  .contacto-bloques {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
   }
 
+  .contacto-bloque {
+    max-width: none;
+    flex: none;
+    padding: 1.1rem 1rem;
+    gap: 0.35rem;
+  }
+
+  .contacto-bloque-icono-envoltura {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+  }
+
+  .contacto-bloque-icono {
+    width: 17px;
+    height: 17px;
+  }
+
+  .contacto-bloque-nombre {
+    font-size: 0.88rem;
+  }
+
+  .contacto-bloque-detalle {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 480px) {
   .contacto-titulo {
     letter-spacing: -0.3px;
   }
 
-  .contacto-grid {
-    grid-template-columns: 1fr;
+  .contacto-perfil {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 18px;
+  }
+
+  .contacto-estado {
+    margin-left: 0;
+  }
+
+  .contacto-bloques {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .contacto-bloque {
+    padding: 0.9rem 0.85rem;
   }
 }
 
@@ -262,8 +303,7 @@
     animation: none;
   }
 
-  .contacto-tarjeta,
-  .contacto-mini {
+  .contacto-bloque {
     transition: none;
   }
 }

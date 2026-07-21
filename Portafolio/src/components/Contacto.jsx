@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 import ModalContacto from "./modales/ModalContacto";
 import "../styles/Contacto.css";
@@ -60,34 +60,7 @@ const enlaces = [
 ];
 
 function Contacto() {
-  const tarjetaRef = useRef(null);
   const [modalAbierto, setModalAbierto] = useState(false);
-
-  useEffect(() => {
-    const tarjeta = tarjetaRef.current;
-    if (!tarjeta) return;
-
-    const onMove = (e) => {
-      const rect = tarjeta.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      tarjeta.style.setProperty("--ct-rx", `${(-y * 6).toFixed(2)}deg`);
-      tarjeta.style.setProperty("--ct-ry", `${(x * 8).toFixed(2)}deg`);
-    };
-
-    const onLeave = () => {
-      tarjeta.style.setProperty("--ct-rx", "0deg");
-      tarjeta.style.setProperty("--ct-ry", "0deg");
-    };
-
-    tarjeta.addEventListener("mousemove", onMove);
-    tarjeta.addEventListener("mouseleave", onLeave);
-
-    return () => {
-      tarjeta.removeEventListener("mousemove", onMove);
-      tarjeta.removeEventListener("mouseleave", onLeave);
-    };
-  }, []);
 
   return (
     <section className="contacto-wrapper" id="contacto">
@@ -103,52 +76,51 @@ function Contacto() {
           interesantes. Elige por dónde prefieres contactarme.
         </p>
 
-        <div className="contacto-tarjeta-envoltura" ref={tarjetaRef}>
-          <div className="contacto-tarjeta">
-            <div className="contacto-tarjeta-borde" />
-
-            <div className="contacto-estado">
-              <span className="contacto-punto" />
-              Disponible para nuevas oportunidades
-            </div>
-
-            <div className="contacto-perfil">
-              <div className="contacto-avatar">AA</div>
-              <div>
-                <span className="contacto-nombre">Adrian Alvarez</span>
-                <span className="contacto-rol">Desarrollador Full Stack</span>
-              </div>
-            </div>
-
-            <div className="contacto-grid">
-              {enlaces.map(({ id, nombre, detalle, Icono, url }) =>
-                id === "correo" ? (
-                  <button
-                    key={id}
-                    type="button"
-                    className="contacto-mini"
-                    onClick={() => setModalAbierto(true)}
-                  >
-                    <Icono className="contacto-mini-icono" />
-                    <span className="contacto-mini-nombre">{nombre}</span>
-                    <span className="contacto-mini-detalle">{detalle}</span>
-                  </button>
-                ) : (
-                  <a
-                    key={id}
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="contacto-mini"
-                  >
-                    <Icono className="contacto-mini-icono" />
-                    <span className="contacto-mini-nombre">{nombre}</span>
-                    <span className="contacto-mini-detalle">{detalle}</span>
-                  </a>
-                )
-              )}
-            </div>
+        <div className="contacto-perfil">
+          <div className="contacto-avatar">AA</div>
+          <div>
+            <span className="contacto-nombre">Adrian Alvarez</span>
+            <span className="contacto-rol">Desarrollador Full Stack</span>
           </div>
+          <div className="contacto-estado">
+            <span className="contacto-punto" />
+            Disponible
+          </div>
+        </div>
+
+        <div className="contacto-bloques">
+          {enlaces.map(({ id, nombre, detalle, Icono, url }) =>
+            id === "correo" ? (
+              <button
+                key={id}
+                type="button"
+                className="contacto-bloque"
+                onClick={() => setModalAbierto(true)}
+              >
+                <span className="contacto-bloque-borde" />
+                <div className="contacto-bloque-icono-envoltura">
+                  <Icono className="contacto-bloque-icono" />
+                </div>
+                <span className="contacto-bloque-nombre">{nombre}</span>
+                <span className="contacto-bloque-detalle">{detalle}</span>
+              </button>
+            ) : (
+              <a
+                key={id}
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                className="contacto-bloque"
+              >
+                <span className="contacto-bloque-borde" />
+                <div className="contacto-bloque-icono-envoltura">
+                  <Icono className="contacto-bloque-icono" />
+                </div>
+                <span className="contacto-bloque-nombre">{nombre}</span>
+                <span className="contacto-bloque-detalle">{detalle}</span>
+              </a>
+            )
+          )}
         </div>
       </div>
 
