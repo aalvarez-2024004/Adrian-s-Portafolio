@@ -8,5 +8,12 @@
     "contacto": "Contacto",
     "abrirMenu": "Abrir menú",
     "cerrarMenu": "Cerrar menú"
+  },
+  "bienvenida": {
+    "tituloLinea1": "Bienvenido",
+    "tituloLinea2": "a mi",
+    "tituloLinea3": "portafolio.",
+    "cita": "Cualquier cosa es posible cuando tienes paz interior.",
+    "altoFoto": "Foto de perfil"
   }
 }

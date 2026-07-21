@@ -8,5 +8,12 @@
     "contacto": "Contact",
     "abrirMenu": "Open menu",
     "cerrarMenu": "Close menu"
+  },
+  "bienvenida": {
+    "tituloLinea1": "Welcome",
+    "tituloLinea2": "to my",
+    "tituloLinea3": "portfolio.",
+    "cita": "Anything is possible when you have inner peace.",
+    "altoFoto": "Profile photo"
   }
 }
