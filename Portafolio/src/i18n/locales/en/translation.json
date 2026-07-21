@@ -15,5 +15,10 @@
     "tituloLinea3": "portfolio.",
     "cita": "Anything is possible when you have inner peace.",
     "altoFoto": "Profile photo"
+  },
+  "sobreMi": {
+    "titulo": "ABOUT ME.",
+    "subtitulo": "Full Stack Developer",
+    "descripcion": "I'm a final-year student graduating as a <highlight>Computer Technician</highlight>, with the goal of continuing my studies in <highlight>Systems Engineering</highlight>. I consider myself a responsible person who is passionate about <highlight>technology</highlight>; I enjoy <highlight>coding</highlight>, <highlight>solving problems</highlight>, and designing web pages with a lot of <highlight>creativity</highlight>."
   }
 }

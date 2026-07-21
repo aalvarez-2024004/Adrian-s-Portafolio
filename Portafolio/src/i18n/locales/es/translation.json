@@ -15,5 +15,10 @@
     "tituloLinea3": "portafolio.",
     "cita": "Cualquier cosa es posible cuando tienes paz interior.",
     "altoFoto": "Foto de perfil"
+  },
+  "sobreMi": {
+    "titulo": "SOBRE MÍ.",
+    "subtitulo": "Full Stack Developer",
+    "descripcion": "Soy estudiante de último año para graduarme como <highlight>Perito en Informática</highlight>, con la meta de continuar mi formación en <highlight>Ingeniería en Sistemas</highlight>. Me considero una persona responsable y apasionado por la <highlight>tecnología</highlight>; disfruto <highlight>programar</highlight>, <highlight>resolver problemas</highlight> y diseñar páginas web con mucha <highlight>creatividad</highlight>."
   }
 }
