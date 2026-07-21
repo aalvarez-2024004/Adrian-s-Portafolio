@@ -106,7 +106,16 @@
   width: 100%;
 }
 
-/* ---------- Ícono LinkedIn (desktop) ---------- */
+/* ---------- Grupo de iconos sociales (desktop) ---------- */
+.navbar-social-grupo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.4rem;
+  padding-left: 1.3rem;
+  border-left: 1px solid var(--nav-linea);
+}
+
 .navbar-social {
   position: relative;
   display: inline-flex;
@@ -118,7 +127,6 @@
   background: var(--nav-blanco);
   border: 1px solid var(--nav-linea);
   color: var(--nav-negro);
-  margin-left: 0.4rem;
   flex-shrink: 0;
   transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease,
     box-shadow 0.25s ease, background 0.25s ease;
@@ -204,16 +212,24 @@
   opacity: 0.6;
 }
 
-/* ---------- Ícono LinkedIn (móvil) ---------- */
+/* ---------- Grupo de iconos sociales (móvil) ---------- */
+.navbar-social-grupo-movil {
+  display: flex;
+  gap: 0.6rem;
+  padding: 1rem 6vw 1.2rem;
+}
+
 .navbar-social-movil {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   color: var(--nav-negro);
   text-decoration: none;
   font-weight: 700;
-  font-size: 1rem;
-  padding: 0.95rem 6vw;
+  font-size: 0.92rem;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--nav-linea);
 }
 
 .navbar-social-movil:active {
