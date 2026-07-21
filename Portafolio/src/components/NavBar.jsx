@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "../styles/Navbar.css";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/adrian-alvarez-665290311";
 const GITHUB_URL = "https://github.com/aalvarez-2024004";
 
 const ENLACES_NAV = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Sobre mí", href: "#sobremi" },
-  { label: "Tecnologías", href: "#tecnologias" },
-  { label: "Currículum", href: "#curriculum" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Contacto", href: "#contacto" },
+  { key: "inicio", href: "#inicio" },
+  { key: "sobreMi", href: "#sobremi" },
+  { key: "tecnologias", href: "#tecnologias" },
+  { key: "curriculum", href: "#curriculum" },
+  { key: "proyectos", href: "#proyectos" },
+  { key: "contacto", href: "#contacto" },
 ];
 
 /* ---------- Icono menú (hamburguesa / cerrar) ---------- */
@@ -62,6 +63,7 @@ const REDES = [
 ];
 
 function Navbar() {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(true);
   const [conFondo, setConFondo] = useState(false);
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -79,8 +81,6 @@ function Navbar() {
         return;
       }
 
-      // En la cima siempre visible; al bajar se oculta de inmediato,
-      // al subir reaparece de inmediato.
       if (actual <= 0) {
         setVisible(true);
       } else if (bajando) {
@@ -112,13 +112,13 @@ function Navbar() {
         <nav className="navbar-links-desktop">
           {ENLACES_NAV.map((enlace) => (
             <a key={enlace.href} href={enlace.href} className="navbar-link">
-              {enlace.label}
+              {t(`nav.${enlace.key}`)}
             </a>
           ))}
 
           <div className="navbar-social-grupo">
             {REDES.map(({ id, label, href, Icono, externo }) => (
-              <a
+              <a /* <-- CORRECCIÓN AQUÍ */
                 key={id}
                 href={href}
                 target={externo ? "_blank" : undefined}
@@ -136,7 +136,7 @@ function Navbar() {
           type="button"
           className="navbar-menu-boton"
           onClick={() => setMenuAbierto((prev) => !prev)}
-          aria-label={menuAbierto ? "Cerrar menú" : "Abrir menú"}
+          aria-label={menuAbierto ? t("nav.cerrarMenu") : t("nav.abrirMenu")}
           aria-expanded={menuAbierto}
         >
           <IconMenu abierto={menuAbierto} className="navbar-menu-icono" />
@@ -145,19 +145,19 @@ function Navbar() {
 
       <nav className={`navbar-links-movil ${menuAbierto ? "navbar-links-movil-abierto" : ""}`}>
         {ENLACES_NAV.map((enlace) => (
-          <a
+          <a /* <-- CORRECCIÓN AQUÍ */
             key={enlace.href}
             href={enlace.href}
             className="navbar-link-movil"
             onClick={cerrarMenu}
           >
-            {enlace.label}
+            {t(`nav.${enlace.key}`)}
           </a>
         ))}
 
         <div className="navbar-social-grupo-movil">
           {REDES.map(({ id, label, href, Icono, externo }) => (
-            <a
+            <a /* <-- CORRECCIÓN AQUÍ */
               key={id}
               href={href}
               target={externo ? "_blank" : undefined}

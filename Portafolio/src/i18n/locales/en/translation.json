@@ -1,0 +1,12 @@
+{
+  "nav": {
+    "inicio": "Home",
+    "sobreMi": "About me",
+    "tecnologias": "Technologies",
+    "curriculum": "Resume",
+    "proyectos": "Projects",
+    "contacto": "Contact",
+    "abrirMenu": "Open menu",
+    "cerrarMenu": "Close menu"
+  }
+}

@@ -7,6 +7,7 @@ import Curriculum from "../components/Curriculum";
 import Proyectos from "../components/Proyectos";
 import Contacto from "../components/Contacto";
 import Footer from "../components/Footer";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Proyectos />
       <Contacto />
       <Footer />
+      <LanguageSwitcher />
     </>
   );
 }
