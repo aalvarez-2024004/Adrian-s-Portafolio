@@ -1,89 +1,54 @@
-const curriculum = {
-  educacion: [
-    {
-      institucion: "Centro Educativo Técnico Laboral KINAL",
-      titulo: "Perito en Informática",
-      periodo: "2024 — Presente",
-      enfoque: [
-        "Programación Orientada a Objetos",
-        "Desarrollo Web",
-        "Bases de Datos",
-        "APIs REST",
-        "Git y GitHub",
-        "Java",
-        "HTML",
-        "CSS",
-        "JAVASCRIPT",
-        "NODEJS",
-        ".NET",
-        "MONGODB",
-        "MYSQL"
-      ],
-    },
-  ],
-
+const IDS = {
+  educacion: ["kinal"],
   habilidadesBlandas: [
-    { label: "Trabajo en equipo", icon: "team" },
-    { label: "Comunicación efectiva", icon: "communication" },
-    { label: "Resolución de problemas", icon: "problem" },
-    { label: "Adaptabilidad", icon: "adaptability" },
-    { label: "Proactividad", icon: "proactivity" },
-    { label: "Pensamiento crítico", icon: "critical" },
-    { label: "Gestión del tiempo", icon: "time" },
-    { label: "Atención al cliente", icon: "service" },
-    { label: "Aprendizaje continuo", icon: "growth" },
-    { label: "Responsabilidad", icon: "responsibility" },
+    "team",
+    "communication",
+    "problem",
+    "adaptability",
+    "proactivity",
+    "critical",
+    "time",
+    "service",
+    "growth",
+    "responsibility",
   ],
-
-  experienciaDesarrollo: [
-    {
-      nombre: "EcoApp",
-      descripcion:
-        "Plataforma web para fomentar el reciclaje mediante inteligencia artificial. Permite identificar el contenedor correcto a partir de una fotografía, además de ofrecer un foro comunitario, gamificación, estadísticas del impacto ambiental, un asistente con IA y un mapa con centros de reciclaje cercanos.",
-      stack: [
-        "React + Vite",
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "IA",
-        "Google Maps"
-      ],
-      github: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
-    },
-    {
-      nombre: "Juego del Ahorcado",
-      descripcion:
-        "Aplicación web interactiva desarrollada como proyecto académico. Obtiene palabras desde una base de datos MySQL, ofrece pistas al jugador y registra el progreso de la partida.",
-      stack: [
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "MySQL"
-      ],
-      github: "https://github.com/aalvarez-2024004/ProyectoFinal4toBim.git",
-    },
-  ],
-
-  experienciaLaboral: [
-    {
-      empresa: "Brooks Brothers (Oakland Place)",
-      puesto: "Servicio al Cliente — Asistente de Ventas",
-      periodo: "2025",
-      bullets: [
-        "Atención al cliente y asesoría en ventas.",
-        "Organización del área y trabajo en equipo.",
-      ],
-    },
-    {
-      empresa: "Calzado Tecún",
-      puesto: "Asistente de Servicio al Cliente",
-      periodo: "2023 — 2024",
-      bullets: [
-        "Atención al cliente y apoyo al departamento de ventas.",
-        "Organización de productos.",
-      ],
-    },
-  ],
+  experienciaDesarrollo: ["ecoapp", "ahorcado"],
+  experienciaLaboral: ["brooks", "tecun"],
 };
 
-export default curriculum;
+const GITHUB_URLS = {
+  ecoapp: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
+  ahorcado: "https://github.com/aalvarez-2024004/ProyectoFinal4toBim.git",
+};
+
+export function generarCurriculum(t) {
+  return {
+    educacion: IDS.educacion.map((id) => ({
+      institucion: t(`curriculum.educacion.${id}.institucion`),
+      titulo: t(`curriculum.educacion.${id}.titulo`),
+      periodo: t(`curriculum.educacion.${id}.periodo`),
+      enfoque: t(`curriculum.educacion.${id}.enfoque`, { returnObjects: true }),
+    })),
+
+    habilidadesBlandas: IDS.habilidadesBlandas.map((id) => ({
+      label: t(`curriculum.habilidadesBlandas.${id}`),
+      icon: id,
+    })),
+
+    experienciaDesarrollo: IDS.experienciaDesarrollo.map((id) => ({
+      nombre: t(`curriculum.experienciaDesarrollo.${id}.nombre`),
+      descripcion: t(`curriculum.experienciaDesarrollo.${id}.descripcion`),
+      stack: t(`curriculum.experienciaDesarrollo.${id}.stack`, { returnObjects: true }),
+      github: GITHUB_URLS[id],
+    })),
+
+    experienciaLaboral: IDS.experienciaLaboral.map((id) => ({
+      empresa: t(`curriculum.experienciaLaboral.${id}.empresa`),
+      puesto: t(`curriculum.experienciaLaboral.${id}.puesto`),
+      periodo: t(`curriculum.experienciaLaboral.${id}.periodo`),
+      bullets: t(`curriculum.experienciaLaboral.${id}.bullets`, { returnObjects: true }),
+    })),
+  };
+}
+
+export default generarCurriculum;

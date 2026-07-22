@@ -43,5 +43,91 @@
     "tituloLinea1": "MIS",
     "tituloLinea2": "HABILIDADES",
     "subtitulo": "Tecnologías"
+  },
+  "curriculum": {
+    "tituloLinea1": "CURRICULUM",
+    "tituloLinea2": "Y   EXPERIENCIA",
+    "subtitulo": "Educación & Experiencia",
+    "vistaPrevia": "Vista previa",
+    "descargarCv": "Descargar CV",
+    "columnas": {
+      "educacion": "Educación",
+      "habilidadesBlandas": "Habilidades Blandas",
+      "habilidadesBlandasLead": "Cualidades que aplico día a día, más allá del código.",
+      "experienciaDesarrollo": "Experiencia en Desarrollo",
+      "experienciaLaboral": "Experiencia Laboral"
+    },
+    "verRepositorio": "Ver repositorio ↗",
+    "modal": {
+      "titulo": "Vista previa — Curriculum Vitae",
+      "cerrar": "Cerrar",
+      "iframeTitulo": "Curriculum Vitae"
+    },
+    "educacion": {
+      "kinal": {
+        "institucion": "Centro Educativo Técnico Laboral KINAL",
+        "titulo": "Perito en Informática",
+        "periodo": "2024 — Presente",
+        "enfoque": [
+          "Programación Orientada a Objetos",
+          "Desarrollo Web",
+          "Bases de Datos",
+          "APIs REST",
+          "Git y GitHub",
+          "Java",
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "NODEJS",
+          ".NET",
+          "MONGODB",
+          "MYSQL"
+        ]
+      }
+    },
+    "habilidadesBlandas": {
+      "team": "Trabajo en equipo",
+      "communication": "Comunicación efectiva",
+      "problem": "Resolución de problemas",
+      "adaptability": "Adaptabilidad",
+      "proactivity": "Proactividad",
+      "critical": "Pensamiento crítico",
+      "time": "Gestión del tiempo",
+      "service": "Atención al cliente",
+      "growth": "Aprendizaje continuo",
+      "responsibility": "Responsabilidad"
+    },
+    "experienciaDesarrollo": {
+      "ecoapp": {
+        "nombre": "EcoApp",
+        "descripcion": "Plataforma web para fomentar el reciclaje mediante inteligencia artificial. Permite identificar el contenedor correcto a partir de una fotografía, además de ofrecer un foro comunitario, gamificación, estadísticas del impacto ambiental, un asistente con IA y un mapa con centros de reciclaje cercanos.",
+        "stack": ["React + Vite", "Node.js", "Express", "MongoDB", "IA", "Google Maps"]
+      },
+      "ahorcado": {
+        "nombre": "Juego del Ahorcado",
+        "descripcion": "Aplicación web interactiva desarrollada como proyecto académico. Obtiene palabras desde una base de datos MySQL, ofrece pistas al jugador y registra el progreso de la partida.",
+        "stack": ["JavaScript", "HTML", "CSS", "MySQL"]
+      }
+    },
+    "experienciaLaboral": {
+      "brooks": {
+        "empresa": "Brooks Brothers (Oakland Place)",
+        "puesto": "Servicio al Cliente — Asistente de Ventas",
+        "periodo": "2025",
+        "bullets": [
+          "Atención al cliente y asesoría en ventas.",
+          "Organización del área y trabajo en equipo."
+        ]
+      },
+      "tecun": {
+        "empresa": "Calzado Tecún",
+        "puesto": "Asistente de Servicio al Cliente",
+        "periodo": "2023 — 2024",
+        "bullets": [
+          "Atención al cliente y apoyo al departamento de ventas.",
+          "Organización de productos."
+        ]
+      }
+    }
   }
 }

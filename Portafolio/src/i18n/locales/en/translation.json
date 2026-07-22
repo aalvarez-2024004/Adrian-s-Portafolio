@@ -43,5 +43,91 @@
     "tituloLinea1": "MY",
     "tituloLinea2": "SKILLS",
     "subtitulo": "Technologies"
+  },
+  "curriculum": {
+    "tituloLinea1": "RESUME",
+    "tituloLinea2": "AND   EXPERIENCE",
+    "subtitulo": "Education & Experience",
+    "vistaPrevia": "Preview",
+    "descargarCv": "Download Resume",
+    "columnas": {
+      "educacion": "Education",
+      "habilidadesBlandas": "Soft Skills",
+      "habilidadesBlandasLead": "Qualities I apply every day, beyond just code.",
+      "experienciaDesarrollo": "Development Experience",
+      "experienciaLaboral": "Work Experience"
+    },
+    "verRepositorio": "View repository ↗",
+    "modal": {
+      "titulo": "Preview — Resume",
+      "cerrar": "Close",
+      "iframeTitulo": "Resume"
+    },
+    "educacion": {
+      "kinal": {
+        "institucion": "KINAL Technical Vocational Education Center",
+        "titulo": "Computer Technician",
+        "periodo": "2024 — Present",
+        "enfoque": [
+          "Object-Oriented Programming",
+          "Web Development",
+          "Databases",
+          "REST APIs",
+          "Git and GitHub",
+          "Java",
+          "HTML",
+          "CSS",
+          "JAVASCRIPT",
+          "NODEJS",
+          ".NET",
+          "MONGODB",
+          "MYSQL"
+        ]
+      }
+    },
+    "habilidadesBlandas": {
+      "team": "Teamwork",
+      "communication": "Effective Communication",
+      "problem": "Problem Solving",
+      "adaptability": "Adaptability",
+      "proactivity": "Proactivity",
+      "critical": "Critical Thinking",
+      "time": "Time Management",
+      "service": "Customer Service",
+      "growth": "Continuous Learning",
+      "responsibility": "Responsibility"
+    },
+    "experienciaDesarrollo": {
+      "ecoapp": {
+        "nombre": "EcoApp",
+        "descripcion": "A web platform that promotes recycling through artificial intelligence. It identifies the correct bin from a photo, and also offers a community forum, gamification, environmental impact statistics, an AI assistant, and a map of nearby recycling centers.",
+        "stack": ["React + Vite", "Node.js", "Express", "MongoDB", "AI", "Google Maps"]
+      },
+      "ahorcado": {
+        "nombre": "Hangman Game",
+        "descripcion": "An interactive web application built as an academic project. It pulls words from a MySQL database, gives the player hints, and tracks game progress.",
+        "stack": ["JavaScript", "HTML", "CSS", "MySQL"]
+      }
+    },
+    "experienciaLaboral": {
+      "brooks": {
+        "empresa": "Brooks Brothers (Oakland Place)",
+        "puesto": "Customer Service — Sales Associate",
+        "periodo": "2025",
+        "bullets": [
+          "Customer service and sales assistance.",
+          "Area organization and teamwork."
+        ]
+      },
+      "tecun": {
+        "empresa": "Calzado Tecún",
+        "puesto": "Customer Service Assistant",
+        "periodo": "2023 — 2024",
+        "bullets": [
+          "Customer service and support for the sales department.",
+          "Product organization."
+        ]
+      }
+    }
   }
 }

@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "../styles/Curriculum.css";
-import curriculum from "../data/curriculum";
+import { generarCurriculum } from "../data/curriculum";
 
 function useOnScreen(threshold = 0.2) {
   const ref = useRef(null);
@@ -143,6 +144,8 @@ const CV_PDF_URL = "/cv/CVAdrianAlvarez.pdf";
 const CV_FILE_NAME = "Adrian-Alvarez-CV.pdf";
 
 function CvModal({ onClose }) {
+  const { t } = useTranslation();
+
   useEffect(() => {
     const onKeyDown = (e) => {
       if (e.key === "Escape") onClose();
@@ -159,19 +162,19 @@ function CvModal({ onClose }) {
     <div className="cv-modal-overlay" onClick={onClose}>
       <div className="cv-modal" onClick={(e) => e.stopPropagation()}>
         <div className="cv-modal-header">
-          <span>Vista previa — Curriculum Vitae</span>
+          <span>{t("curriculum.modal.titulo")}</span>
           <button
             type="button"
             className="cv-modal-close"
             onClick={onClose}
-            aria-label="Cerrar"
+            aria-label={t("curriculum.modal.cerrar")}
           >
             ✕
           </button>
         </div>
         <iframe
           src={CV_PDF_URL}
-          title="Curriculum Vitae"
+          title={t("curriculum.modal.iframeTitulo")}
           className="cv-modal-frame"
         />
       </div>
@@ -180,17 +183,20 @@ function CvModal({ onClose }) {
 }
 
 function Curriculum() {
+  const { t, i18n } = useTranslation();
   const [showPreview, setShowPreview] = useState(false);
+
+  const curriculum = useMemo(() => generarCurriculum(t), [t, i18n.language]);
 
   return (
     <section className="curriculum-wrapper" id="curriculum">
       <div className="curriculum-header">
         <h2 className="curriculum-titulo">
-          CURRICULUM
+          {t("curriculum.tituloLinea1")}
           <br />
-          Y   EXPERIENCIA
+          {t("curriculum.tituloLinea2")}
         </h2>
-        <p className="curriculum-subtitulo">Educación &amp; Experiencia</p>
+        <p className="curriculum-subtitulo">{t("curriculum.subtitulo")}</p>
 
         <div className="cv-acciones">
           <button
@@ -198,15 +204,15 @@ function Curriculum() {
             className="cv-btn cv-btn--primary"
             onClick={() => setShowPreview(true)}
           >
-            Vista previa
+            {t("curriculum.vistaPrevia")}
           </button>
-          
+
           <a
             className="cv-btn cv-btn--outline"
             href={CV_PDF_URL}
             download={CV_FILE_NAME}
           >
-            Descargar CV
+            {t("curriculum.descargarCv")}
           </a>
         </div>
       </div>
@@ -216,7 +222,7 @@ function Curriculum() {
       <div className="curriculum-grid">
         {/* Educación */}
         <div className="cv-columna">
-          <h3 className="cv-columna-titulo">Educación</h3>
+          <h3 className="cv-columna-titulo">{t("curriculum.columnas.educacion")}</h3>
 
           {curriculum.educacion.map((edu) => (
             <TimelineItem
@@ -238,16 +244,16 @@ function Curriculum() {
 
         {/* Habilidades Blandas — columna dedicada */}
         <div className="cv-columna">
-          <h3 className="cv-columna-titulo">Habilidades Blandas</h3>
+          <h3 className="cv-columna-titulo">{t("curriculum.columnas.habilidadesBlandas")}</h3>
           <p className="cv-columna-lead">
-            Cualidades que aplico día a día, más allá del código.
+            {t("curriculum.columnas.habilidadesBlandasLead")}
           </p>
           <HabilidadesBlandas items={curriculum.habilidadesBlandas} />
         </div>
 
         {/* Experiencia en Desarrollo */}
         <div className="cv-columna">
-          <h3 className="cv-columna-titulo">Experiencia en Desarrollo</h3>
+          <h3 className="cv-columna-titulo">{t("curriculum.columnas.experienciaDesarrollo")}</h3>
 
           {curriculum.experienciaDesarrollo.map((proyecto) => (
             <TimelineItem
@@ -256,14 +262,13 @@ function Curriculum() {
               title={proyecto.nombre}
               subtitle={proyecto.descripcion}
             >
-              {/* CORRECCIÓN AQUÍ: Agregué la etiqueta <a> */}
               <a
                 href={proyecto.github}
                 target="_blank"
                 rel="noreferrer"
                 className="cv-link"
               >
-                Ver repositorio ↗
+                {t("curriculum.verRepositorio")}
               </a>
             </TimelineItem>
           ))}
@@ -271,7 +276,7 @@ function Curriculum() {
 
         {/* Experiencia Laboral */}
         <div className="cv-columna">
-          <h3 className="cv-columna-titulo">Experiencia Laboral</h3>
+          <h3 className="cv-columna-titulo">{t("curriculum.columnas.experienciaLaboral")}</h3>
 
           {curriculum.experienciaLaboral.map((trabajo) => (
             <TimelineItem
