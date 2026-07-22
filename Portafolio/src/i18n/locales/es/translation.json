@@ -20,5 +20,23 @@
     "titulo": "SOBRE MÍ.",
     "subtitulo": "Full Stack Developer",
     "descripcion": "Soy estudiante de último año para graduarme como <highlight>Perito en Informática</highlight>, con la meta de continuar mi formación en <highlight>Ingeniería en Sistemas</highlight>. Me considero una persona responsable y apasionado por la <highlight>tecnología</highlight>; disfruto <highlight>programar</highlight>, <highlight>resolver problemas</highlight> y diseñar páginas web con mucha <highlight>creatividad</highlight>."
+  },
+  "datosGenerales": {
+    "titulo": "Conóceme un poco más.",
+    "anterior": "Anterior",
+    "siguiente": "Siguiente",
+    "items": {
+      "curioso": { "titulo": "Dato Curioso", "contenido": "Me gustan los atardeceres" },
+      "nombre": { "titulo": "Nombre", "contenido": "Adrian Rafael Alvarez Marín" },
+      "edad": { "titulo": "Edad", "contenido": "18 años" },
+      "ubicacion": { "titulo": "Ubicación", "contenido": "Guatemala, Guatemala" },
+      "correo": { "titulo": "Correo electrónico", "contenido": "adralvarez0022@gmail.com" },
+      "telefono": { "titulo": "Número telefónico", "contenido": "+502 5713-9320" },
+      "formacion": { "titulo": "Formación", "contenido": "Perito en Informática" },
+      "expBackend": { "titulo": "Experiencia Backend", "contenido": "3 años" },
+      "expFrontend": { "titulo": "Experiencia Frontend", "contenido": "2 años" },
+      "idiomas": { "titulo": "Idiomas", "contenido": "Español · Inglés B1" },
+      "colorFavorito": { "titulo": "Color Favorito", "contenido": "Negro y blanco" }
+    }
   }
 }

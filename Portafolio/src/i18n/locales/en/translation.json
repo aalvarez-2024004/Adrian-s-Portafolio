@@ -20,5 +20,23 @@
     "titulo": "ABOUT ME.",
     "subtitulo": "Full Stack Developer",
     "descripcion": "I'm a final-year student graduating as a <highlight>Computer Technician</highlight>, with the goal of continuing my studies in <highlight>Systems Engineering</highlight>. I consider myself a responsible person who is passionate about <highlight>technology</highlight>; I enjoy <highlight>coding</highlight>, <highlight>solving problems</highlight>, and designing web pages with a lot of <highlight>creativity</highlight>."
+  },
+  "datosGenerales": {
+    "titulo": "Get to know me a bit more.",
+    "anterior": "Previous",
+    "siguiente": "Next",
+    "items": {
+      "curioso": { "titulo": "Fun Fact", "contenido": "I like sunsets" },
+      "nombre": { "titulo": "Name", "contenido": "Adrian Rafael Alvarez Marín" },
+      "edad": { "titulo": "Age", "contenido": "18 years old" },
+      "ubicacion": { "titulo": "Location", "contenido": "Guatemala, Guatemala" },
+      "correo": { "titulo": "Email", "contenido": "adralvarez0022@gmail.com" },
+      "telefono": { "titulo": "Phone Number", "contenido": "+502 5713-9320" },
+      "formacion": { "titulo": "Education", "contenido": "Computer Technician" },
+      "expBackend": { "titulo": "Backend Experience", "contenido": "3 years" },
+      "expFrontend": { "titulo": "Frontend Experience", "contenido": "2 years" },
+      "idiomas": { "titulo": "Languages", "contenido": "Spanish · English B1" },
+      "colorFavorito": { "titulo": "Favorite Color", "contenido": "Black and white" }
+    }
   }
 }
