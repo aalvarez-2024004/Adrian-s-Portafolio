@@ -218,5 +218,11 @@
       "enviando": "Enviando...",
       "enviar": "Enviar mensaje"
     }
+  },
+  "footer": {
+    "tagline": "Desarrollador Full Stack construyendo experiencias web claras y funcionales.",
+    "navegacionTitulo": "Navegación",
+    "copy": "© {{anio}} Adrian Alvarez. Todos los derechos reservados.",
+    "volverArriba": "Volver arriba"
   }
 }

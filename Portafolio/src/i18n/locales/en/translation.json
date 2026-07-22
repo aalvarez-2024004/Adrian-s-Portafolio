@@ -218,5 +218,11 @@
       "enviando": "Sending...",
       "enviar": "Send message"
     }
+  },
+  "footer": {
+    "tagline": "Full Stack Developer building clear and functional web experiences.",
+    "navegacionTitulo": "Navigation",
+    "copy": "© {{anio}} Adrian Alvarez. All rights reserved.",
+    "volverArriba": "Back to top"
   }
 }

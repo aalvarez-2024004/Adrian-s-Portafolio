@@ -1,14 +1,15 @@
+import { useTranslation } from "react-i18next";
 import "../styles/Footer.css";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/adrian-alvarez-665290311";
 
 const ENLACES_NAV = [
-  { label: "Inicio", href: "#inicio" },
-  { label: "Sobre mí", href: "#sobremi" },
-  { label: "Tecnologías", href: "#tecnologias" },
-  { label: "Currículum", href: "#curriculum" },
-  { label: "Proyectos", href: "#proyectos" },
-  { label: "Contacto", href: "#contacto" },
+  { key: "inicio", href: "#inicio" },
+  { key: "sobreMi", href: "#sobremi" },
+  { key: "tecnologias", href: "#tecnologias" },
+  { key: "curriculum", href: "#curriculum" },
+  { key: "proyectos", href: "#proyectos" },
+  { key: "contacto", href: "#contacto" },
 ];
 
 /* ---------- Icono LinkedIn ---------- */
@@ -44,6 +45,8 @@ function IconArribaFlecha({ className }) {
 
 /* ---------- Sección principal ---------- */
 function Footer() {
+  const { t } = useTranslation();
+
   const irArriba = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -53,29 +56,26 @@ function Footer() {
       <div className="footer-contenido">
         <div className="footer-marca">
           <span className="footer-nombre">Adrian Alvarez</span>
-          <p className="footer-tagline">
-            Desarrollador Full Stack construyendo experiencias web claras y
-            funcionales.
-          </p>
+          <p className="footer-tagline">{t("footer.tagline")}</p>
 
-            <a
+          <a /* <-- CORRECCIÓN AQUÍ */
             href={LINKEDIN_URL}
             target="_blank"
             rel="noreferrer"
             className="footer-social"
             aria-label="LinkedIn"
-            >
+          >
             <IconLinkedIn className="footer-social-icono" />
-            </a>
+          </a>
         </div>
 
         <div className="footer-navegacion">
-          <span className="footer-nav-titulo">Navegación</span>
+          <span className="footer-nav-titulo">{t("footer.navegacionTitulo")}</span>
           <ul className="footer-nav">
             {ENLACES_NAV.map((enlace) => (
               <li key={enlace.href}>
                 <a href={enlace.href} className="footer-nav-link">
-                  {enlace.label}
+                  {t(`nav.${enlace.key}`)}
                 </a>
               </li>
             ))}
@@ -87,16 +87,11 @@ function Footer() {
 
       <div className="footer-inferior">
         <p className="footer-copy">
-          © {new Date().getFullYear()} Adrian Alvarez. Todos los derechos
-          reservados.
+          {t("footer.copy", { anio: new Date().getFullYear() })}
         </p>
 
-        <button
-          type="button"
-          className="footer-arriba"
-          onClick={irArriba}
-        >
-          Volver arriba
+        <button type="button" className="footer-arriba" onClick={irArriba}>
+          {t("footer.volverArriba")}
           <IconArribaFlecha className="footer-arriba-icono" />
         </button>
       </div>
