@@ -38,5 +38,10 @@
       "idiomas": { "titulo": "Languages", "contenido": "Spanish · English B1" },
       "colorFavorito": { "titulo": "Favorite Color", "contenido": "Black and white" }
     }
+  },
+  "tecnologias": {
+    "tituloLinea1": "MY",
+    "tituloLinea2": "SKILLS",
+    "subtitulo": "Technologies"
   }
 }

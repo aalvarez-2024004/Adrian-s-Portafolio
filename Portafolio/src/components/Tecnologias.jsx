@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "../styles/Tecnologias.css";
 import angelImg from "../assets/angelCayendoOO.png";
 import tecnologias from "../data/tecnologias";
@@ -20,6 +21,7 @@ const FADE_ZONE = 0.6;
 const LERP_FACTOR = 0.075;
 
 function Tecnologias() {
+  const { t } = useTranslation();
   const wrapperRef = useRef(null);
   const stickyRef = useRef(null);
   const [isDesktop, setIsDesktop] = useState(true);
@@ -135,11 +137,11 @@ function Tecnologias() {
 
         <div className="tecnologias-contenido">
           <h2 className="tecnologias-titulo">
-            MIS
+            {t("tecnologias.tituloLinea1")}
             <br />
-            HABILIDADES
+            {t("tecnologias.tituloLinea2")}
           </h2>
-          <p className="tecnologias-subtitulo">Tecnologías</p>
+          <p className="tecnologias-subtitulo">{t("tecnologias.subtitulo")}</p>
 
           <div className="tecnologias-stage">
             {GRUPOS.map((grupo, gi) => {
