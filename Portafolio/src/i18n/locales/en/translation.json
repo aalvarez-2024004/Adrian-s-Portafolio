@@ -197,5 +197,26 @@
       "github": { "nombre": "GitHub", "detalle": "View projects" },
       "instagram": { "nombre": "Instagram", "detalle": "Follow" }
     }
+  },
+  "modalContacto": {
+    "cerrar": "Close",
+    "errorCampos": "Fill in all fields before submitting.",
+    "errorGenerico": "Something went wrong while sending the message.",
+    "exito": {
+      "titulo": "Message sent",
+      "texto": "Thanks for reaching out, I'll get back to you as soon as possible."
+    },
+    "form": {
+      "titulo": "Send a message",
+      "subtitulo": "I'll reply directly to the email you leave here.",
+      "campoTitulo": "Title",
+      "placeholderTitulo": "E.g. Project opportunity",
+      "campoCorreo": "Your email",
+      "placeholderCorreo": "youremail@example.com",
+      "campoMensaje": "Message",
+      "placeholderMensaje": "Tell me what you have in mind...",
+      "enviando": "Sending...",
+      "enviar": "Send message"
+    }
   }
 }
