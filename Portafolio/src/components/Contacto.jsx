@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { Trans, useTranslation } from "react-i18next";
 
 import ModalContacto from "./modales/ModalContacto";
 import "../styles/Contacto.css";
@@ -52,39 +53,51 @@ function IconInstagram({ className }) {
   );
 }
 
-const enlaces = [
-  { id: "correo", nombre: "Correo", detalle: "Enviar un mensaje", Icono: IconCorreo },
-  { id: "linkedin", nombre: "LinkedIn", detalle: "Conectar", Icono: IconLinkedIn, url: LINKEDIN_URL },
-  { id: "github", nombre: "GitHub", detalle: "Ver proyectos", Icono: IconGitHub, url: GITHUB_URL },
-  { id: "instagram", nombre: "Instagram", detalle: "Seguir", Icono: IconInstagram, url: INSTAGRAM_URL },
-];
+const IDS_ENLACES = ["correo", "linkedin", "github", "instagram"];
+
+const ICONOS_Y_URLS = {
+  correo: { Icono: IconCorreo, url: undefined },
+  linkedin: { Icono: IconLinkedIn, url: LINKEDIN_URL },
+  github: { Icono: IconGitHub, url: GITHUB_URL },
+  instagram: { Icono: IconInstagram, url: INSTAGRAM_URL },
+};
 
 function Contacto() {
+  const { t, i18n } = useTranslation();
   const [modalAbierto, setModalAbierto] = useState(false);
+
+  const enlaces = useMemo(
+    () =>
+      IDS_ENLACES.map((id) => ({
+        id,
+        nombre: t(`contacto.enlaces.${id}.nombre`),
+        detalle: t(`contacto.enlaces.${id}.detalle`),
+        Icono: ICONOS_Y_URLS[id].Icono,
+        url: ICONOS_Y_URLS[id].url,
+      })),
+    [t, i18n.language]
+  );
 
   return (
     <section className="contacto-wrapper" id="contacto">
       <div className="contacto-contenido">
-        <span className="contacto-eyebrow">// Contacto</span>
+        <span className="contacto-eyebrow">{t("contacto.eyebrow")}</span>
 
         <h2 className="contacto-titulo">
-          ¿Construimos algo <em>grandioso</em> juntos?
+          <Trans i18nKey="contacto.titulo" components={{ em: <em /> }} />
         </h2>
 
-        <p className="contacto-texto">
-          Estoy abierto a nuevas oportunidades, colaboraciones y proyectos
-          interesantes. Elige por dónde prefieres contactarme.
-        </p>
+        <p className="contacto-texto">{t("contacto.texto")}</p>
 
         <div className="contacto-perfil">
           <div className="contacto-avatar">AA</div>
           <div>
-            <span className="contacto-nombre">Adrian Alvarez</span>
-            <span className="contacto-rol">Desarrollador Full Stack</span>
+            <span className="contacto-nombre">{t("contacto.nombre")}</span>
+            <span className="contacto-rol">{t("contacto.rol")}</span>
           </div>
           <div className="contacto-estado">
             <span className="contacto-punto" />
-            Disponible
+            {t("contacto.disponible")}
           </div>
         </div>
 
@@ -105,7 +118,7 @@ function Contacto() {
                 <span className="contacto-bloque-detalle">{detalle}</span>
               </button>
             ) : (
-              <a
+              <a /* <-- CORRECCIÓN AQUÍ */
                 key={id}
                 href={url}
                 target="_blank"

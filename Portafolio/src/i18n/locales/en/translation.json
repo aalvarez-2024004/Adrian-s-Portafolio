@@ -183,5 +183,19 @@
         "stack": ["Java EE", "GlassFish", "MySQL"]
       }
     }
+  },
+  "contacto": {
+    "eyebrow": "// Contact",
+    "titulo": "Shall we build something <em>great</em> together?",
+    "texto": "I'm open to new opportunities, collaborations, and interesting projects. Choose how you'd prefer to reach me.",
+    "nombre": "Adrian Alvarez",
+    "rol": "Full Stack Developer",
+    "disponible": "Available",
+    "enlaces": {
+      "correo": { "nombre": "Email", "detalle": "Send a message" },
+      "linkedin": { "nombre": "LinkedIn", "detalle": "Connect" },
+      "github": { "nombre": "GitHub", "detalle": "View projects" },
+      "instagram": { "nombre": "Instagram", "detalle": "Follow" }
+    }
   }
 }
