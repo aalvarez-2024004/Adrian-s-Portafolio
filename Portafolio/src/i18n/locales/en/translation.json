@@ -129,5 +129,59 @@
         ]
       }
     }
+  },
+  "proyectos": {
+    "titulo": "PROJECTS",
+    "verDetalles": "View Details",
+    "proyectoAnterior": "Previous project",
+    "proyectoSiguiente": "Next project",
+    "irA": "Go to {{nombre}}",
+    "modal": {
+      "cerrar": "Close",
+      "imagenAnterior": "Previous image",
+      "siguienteImagen": "Next image",
+      "verImagen": "View image {{numero}}",
+      "verRepositorio": "View repository",
+      "verDemo": "View demo",
+      "captura": "{{nombre}} screenshot {{numero}}"
+    },
+    "items": {
+      "ecoapp": {
+        "nombre": "EcoApp",
+        "descripcionCorta": "AI-assisted recycling platform with a community forum and gamification.",
+        "descripcionLarga": "A web platform that promotes recycling through artificial intelligence. It identifies the correct bin from a photo, and also offers a community forum, gamification, environmental impact statistics, an AI assistant, and a map of nearby recycling centers.",
+        "stack": ["React + Vite", "Node.js", "Express", "MongoDB", "AI", "Google Maps"]
+      },
+      "kinalgourmet": {
+        "nombre": "Kinal Gourmet",
+        "descripcionCorta": "Platform connecting restaurants and customers for online food orders.",
+        "descripcionLarga": "Kinal Gourmet House aims to partner with restaurants that want to publish their menus and profiles on the platform, letting customers browse a variety of restaurants and place food orders directly through the app.",
+        "stack": ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL"]
+      },
+      "kinalbank": {
+        "nombre": "Kinal Bank",
+        "descripcionCorta": "Digital bank enabling transfers, deposits, and real-time currency conversion.",
+        "descripcionLarga": "Kinal Bank aims to streamline and maximize security between the user and the bank. It supports transfers, deposits, and access to products and memberships. It integrates the Exchange API for real-time currency conversion — for example, sending money from a dollar account to a quetzal account with the conversion handled automatically.",
+        "stack": ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL", "Exchange API"]
+      },
+      "lanatasks": {
+        "nombre": "LanaTasks",
+        "descripcionCorta": "Academic task manager with reminders, a calendar, and an AI assistant.",
+        "descripcionLarga": "LanaTasks lets you sign up and organize tasks with ease: assign priority, subject, and due date, get reminders, and mark tasks as complete. It includes a calendar for important dates and a built-in AI assistant that answers task-related questions. Sign-in is simple: email, password, and name.",
+        "stack": ["React + Vite", "Node.js", "Express", "MongoDB", "AI"]
+      },
+      "vetmed": {
+        "nombre": "VetMed",
+        "descripcionCorta": "Desktop system for vet clinics: appointments, treatments, vaccines, and billing.",
+        "descripcionLarga": "VetMed is a desktop application that streamlines veterinary clinic work through a dashboard for managing clients, pets, consultations, appointments, treatments, vaccinations, veterinarians, medications, prescriptions, invoices, purchases, suppliers, and employees, all with full CRUD operations (add, edit, delete, search).",
+        "stack": ["JavaFX", "Scene Builder", "MySQL"]
+      },
+      "essenzaco": {
+        "nombre": "EssenzaCo",
+        "descripcionCorta": "Admin system for a perfume shop: customers, suppliers, sales, and purchases.",
+        "descripcionLarga": "EssenzaCo is a platform for a perfume shop that lets the administrator manage customers, suppliers, products, employees, sales, and purchases (including line-item detail) from a dashboard with full CRUD operations. It also includes a storefront where end users can browse and buy products.",
+        "stack": ["Java EE", "GlassFish", "MySQL"]
+      }
+    }
   }
 }

@@ -25,7 +25,6 @@ import ltCalendario2 from "../assets/lanaTasks/LanaCalendario2.png";
 import ltIA from "../assets/lanaTasks/LanaIA.png";
 import ltIA2 from "../assets/lanaTasks/LanaIA2.png";
 
-
 // ---------- EssenzaCo ----------
 import ecPortada from "../assets/essenzaCo/ecPortada.png";
 import ecLogin from "../assets/essenzaCo/EssezaLogin.png";
@@ -53,15 +52,10 @@ import eaGamificacion from "../assets/ecoApp/eaGamificacion.png";
 import eaMapa from "../assets/ecoApp/eaMapa.png";
 import eaEcoBot from "../assets/ecoApp/eaEcoBot.png";
 
-const proyectos = [
-    {
+// Datos que NO cambian entre idiomas: assets, links, colores, tipo de portada
+const BASE_PROYECTOS = [
+  {
     id: "ecoapp",
-    nombre: "EcoApp",
-    descripcionCorta:
-      "Plataforma de reciclaje asistida por IA con foro comunitario y gamificación.",
-    descripcionLarga:
-      "Plataforma web para fomentar el reciclaje mediante inteligencia artificial. Permite identificar el contenedor correcto a partir de una fotografía, además de ofrecer un foro comunitario, gamificación, estadísticas del impacto ambiental, un asistente con IA y un mapa con centros de reciclaje cercanos.",
-    stack: ["React + Vite", "Node.js", "Express", "MongoDB", "IA", "Google Maps"],
     github: "https://github.com/aalvarez-2024004/EcoApp/tree/ftalacan-2024010",
     demo: "https://app-movil-eco-kinal.vercel.app/",
     portadaTipo: "imagen",
@@ -71,12 +65,6 @@ const proyectos = [
   },
   {
     id: "kinalgourmet",
-    nombre: "Kinal Gourmet",
-    descripcionCorta:
-      "Plataforma intermediaria entre restaurantes y clientes para pedidos de comida en línea.",
-    descripcionLarga:
-      "Kinal Gourmet House busca asociar restaurantes que quieran publicar sus menús y perfiles dentro de la plataforma, permitiendo a los clientes explorar una variedad de restaurantes y realizar pedidos de comida directamente por medio de la aplicación.",
-    stack: ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL"],
     github: "https://github.com/jrealiquez-2021549/AppMovil-SistemaRestaurante/tree/ftrealiquez-2021549",
     demo: "https://kinal-gourmet-web.vercel.app/",
     portadaTipo: "imagen",
@@ -86,29 +74,17 @@ const proyectos = [
   },
   {
     id: "kinalbank",
-    nombre: "Kinal Bank",
-    descripcionCorta:
-      "Banco digital que facilita transferencias, depósitos y conversión de divisas en tiempo real.",
-    descripcionLarga:
-      "Kinal Bank busca facilitar y maximizar la seguridad entre el usuario y el banco. Permite realizar transferencias, recibir depósitos y obtener productos y membresías. Integra la API Exchange para hacer conversiones de moneda en tiempo real, por ejemplo enviar dinero desde una cuenta en dólares hacia una cuenta en quetzales con la conversión hecha automáticamente.",
-    stack: ["React + Vite", "Node.js", "Express", "MongoDB", "PostgreSQL", "Exchange API"],
     github: "https://github.com/aalvarez-2024004/AppMovil-SistemaBancario/tree/ftaalvarez-2024004",
     demo: "https://app-movil-sistema-bancario-hfca.vercel.app/",
     portadaTipo: "imagen",
     portada: kbPortada,
     imagenes: [kbLogin, kbClient, kbAdmin, kbTransfer],
     colorAcento: "#2277ff",
-  },  
+  },
   {
     id: "lanatasks",
-    nombre: "LanaTasks",
-    descripcionCorta:
-      "Gestor de tareas académicas con recordatorios, calendario y asistente de IA.",
-    descripcionLarga:
-      "LanaTasks permite registrarse y organizar tareas de forma sencilla: se puede asignar prioridad, materia y fecha de vencimiento, recibir recordatorios y marcar tareas como completadas. Incluye un calendario para fechas importantes y un asistente de inteligencia artificial integrado que responde preguntas relacionadas a las tareas. El inicio de sesión es simple: correo, contraseña y nombre.",
-    stack: ["React + Vite", "Node.js", "Express", "MongoDB", "IA"],
-    github: "", 
-    demo: null, 
+    github: "",
+    demo: null,
     portadaTipo: "imagen",
     portada: ltPortada,
     imagenes: [ltLogin, ltHome, ltHome1, ltCalendario, ltCalendario2, ltIA, ltIA2],
@@ -116,13 +92,7 @@ const proyectos = [
   },
   {
     id: "vetmed",
-    nombre: "VetMed",
-    descripcionCorta:
-      "Sistema de escritorio para veterinarias: citas, tratamientos, vacunas y facturación.",
-    descripcionLarga:
-      "VetMed es una aplicación de escritorio que facilita el trabajo de una veterinaria a través de un dashboard donde se administran clientes, mascotas, consultas, citas, tratamientos, vacunaciones, veterinarios, medicamentos, recetas, facturas, compras, proveedores y empleados, todo con operaciones CRUD (agregar, editar, eliminar, buscar).",
-    stack: ["JavaFX", "Scene Builder", "MySQL"],
-    github: "", 
+    github: "",
     demo: null,
     portadaTipo: "imagen",
     portada: vmPortada,
@@ -131,19 +101,23 @@ const proyectos = [
   },
   {
     id: "essenzaco",
-    nombre: "EssenzaCo",
-    descripcionCorta:
-      "Sistema administrativo para una perfumería: clientes, proveedores, ventas y compras.",
-    descripcionLarga:
-      "EssenzaCo es una plataforma para una perfumería que permite al administrador gestionar clientes, proveedores, productos, empleados, ventas y compras (incluyendo el detalle de cada una) desde un dashboard con operaciones CRUD completas. También cuenta con una página principal donde los usuarios finales pueden explorar y comprar productos.",
-    stack: ["Java EE", "GlassFish", "MySQL"],
-    github: "", 
-    demo: null, 
+    github: "",
+    demo: null,
     portadaTipo: "imagen",
     portada: ecPortada,
     imagenes: [ecPrincipal, ecLogin, ecAdmin, ecProductos, ecCompras],
     colorAcento: "#d4af37",
-  },  
+  },
 ];
 
-export default proyectos;
+export function generarProyectos(t) {
+  return BASE_PROYECTOS.map((base) => ({
+    ...base,
+    nombre: t(`proyectos.items.${base.id}.nombre`),
+    descripcionCorta: t(`proyectos.items.${base.id}.descripcionCorta`),
+    descripcionLarga: t(`proyectos.items.${base.id}.descripcionLarga`),
+    stack: t(`proyectos.items.${base.id}.stack`, { returnObjects: true }),
+  }));
+}
+
+export default generarProyectos;

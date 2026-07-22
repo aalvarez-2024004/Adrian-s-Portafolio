@@ -1,7 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import gsap from "gsap";
 import "../styles/Proyectos.css";
-import proyectos from "../data/proyectos";
+import { generarProyectos } from "../data/proyectos";
 import fondoVideo from "../assets/FondoProyectos.mp4";
 
 /* ---------- Hook: detecta si estamos en viewport móvil ---------- */
@@ -41,6 +42,7 @@ function Portada({ proyecto, className }) {
 
 /* ---------- Modal de galería + descripción completa ---------- */
 function ProyectoModal({ proyecto, onClose }) {
+  const { t } = useTranslation();
   const [imgIndex, setImgIndex] = useState(0);
 
   useEffect(() => {
@@ -80,7 +82,7 @@ function ProyectoModal({ proyecto, onClose }) {
             type="button"
             className="py-modal-close"
             onClick={onClose}
-            aria-label="Cerrar"
+            aria-label={t("proyectos.modal.cerrar")}
           >
             ✕
           </button>
@@ -91,7 +93,10 @@ function ProyectoModal({ proyecto, onClose }) {
             <img
               className="py-gallery-img"
               src={proyecto.imagenes[imgIndex]}
-              alt={`${proyecto.nombre} captura ${imgIndex + 1}`}
+              alt={t("proyectos.modal.captura", {
+                nombre: proyecto.nombre,
+                numero: imgIndex + 1,
+              })}
             />
 
             {proyecto.imagenes.length > 1 && (
@@ -100,7 +105,7 @@ function ProyectoModal({ proyecto, onClose }) {
                   type="button"
                   className="py-gallery-nav py-gallery-nav--prev"
                   onClick={prev}
-                  aria-label="Imagen anterior"
+                  aria-label={t("proyectos.modal.imagenAnterior")}
                 >
                   ‹
                 </button>
@@ -108,7 +113,7 @@ function ProyectoModal({ proyecto, onClose }) {
                   type="button"
                   className="py-gallery-nav py-gallery-nav--next"
                   onClick={next}
-                  aria-label="Siguiente imagen"
+                  aria-label={t("proyectos.modal.siguienteImagen")}
                 >
                   ›
                 </button>
@@ -122,7 +127,7 @@ function ProyectoModal({ proyecto, onClose }) {
                         i === imgIndex ? "py-gallery-dot--activo" : ""
                       }`}
                       onClick={() => setImgIndex(i)}
-                      aria-label={`Ver imagen ${i + 1}`}
+                      aria-label={t("proyectos.modal.verImagen", { numero: i + 1 })}
                     />
                   ))}
                 </div>
@@ -143,24 +148,24 @@ function ProyectoModal({ proyecto, onClose }) {
 
             <div className="py-modal-links">
               {proyecto.github ? (
-                <a
+                <a /* <-- CORRECCIÓN AQUÍ */
                   href={proyecto.github}
                   target="_blank"
                   rel="noreferrer"
                   className="py-btn py-btn--primary"
                 >
-                  Ver repositorio
+                  {t("proyectos.modal.verRepositorio")}
                 </a>
               ) : null}
 
               {proyecto.demo ? (
-                <a
+                <a /* <-- CORRECCIÓN AQUÍ */
                   href={proyecto.demo}
                   target="_blank"
                   rel="noreferrer"
                   className="py-btn py-btn--outline"
                 >
-                  Ver demo
+                  {t("proyectos.modal.verDemo")}
                 </a>
               ) : null}
             </div>
@@ -175,7 +180,10 @@ function ProyectoModal({ proyecto, onClose }) {
 const AUTOPLAY_MS = 12000; // entre 10 y 15 segundos
 
 function Proyectos() {
+  const { t, i18n } = useTranslation();
   const isMobile = useIsMobile();
+
+  const proyectos = useMemo(() => generarProyectos(t), [t, i18n.language]);
   const total = proyectos.length;
 
   const wrapperRef = useRef(null);
@@ -304,7 +312,7 @@ function Proyectos() {
         />
 
         <div className="proyectos-header">
-          <h2 className="proyectos-titulo">PROYECTOS</h2>
+          <h2 className="proyectos-titulo">{t("proyectos.titulo")}</h2>
         </div>
 
         <div
@@ -331,7 +339,7 @@ function Proyectos() {
                   className="py-ver-mas"
                   onClick={() => setModalProyecto(p)}
                 >
-                  Ver Detalles
+                  {t("proyectos.verDetalles")}
                 </button>
               </div>
             </div>
@@ -345,7 +353,7 @@ function Proyectos() {
               type="button"
               className={`proyectos-dot ${i === displayIndex ? "proyectos-dot--activo" : ""}`}
               onClick={() => irAProyecto(i)}
-              aria-label={`Ir a ${p.nombre}`}
+              aria-label={t("proyectos.irA", { nombre: p.nombre })}
               style={{ "--py-dot-color": p.colorAcento }}
             />
           ))}
@@ -382,7 +390,7 @@ function Proyectos() {
 
       <div className="proyectos-pin">
         <div className="proyectos-header">
-          <h2 className="proyectos-titulo">PROYECTOS</h2>
+          <h2 className="proyectos-titulo">{t("proyectos.titulo")}</h2>
         </div>
 
         <div className="proyectos-escenario">
@@ -390,7 +398,7 @@ function Proyectos() {
             type="button"
             className="py-nav-arrow py-nav-arrow--izq"
             onClick={irAnterior}
-            aria-label="Proyecto anterior"
+            aria-label={t("proyectos.proyectoAnterior")}
           >
             ‹
           </button>
@@ -420,7 +428,7 @@ function Proyectos() {
                 className="py-ver-mas"
                 onClick={() => setModalProyecto(proyectoActual)}
               >
-                Ver Detalles
+                {t("proyectos.verDetalles")}
               </button>
             </div>
           </div>
@@ -439,7 +447,7 @@ function Proyectos() {
             type="button"
             className="py-nav-arrow py-nav-arrow--der"
             onClick={irSiguiente}
-            aria-label="Siguiente proyecto"
+            aria-label={t("proyectos.proyectoSiguiente")}
           >
             ›
           </button>
@@ -452,7 +460,7 @@ function Proyectos() {
               type="button"
               className={`proyectos-dot ${i === displayIndex ? "proyectos-dot--activo" : ""}`}
               onClick={() => irAProyecto(i)}
-              aria-label={`Ir a ${p.nombre}`}
+              aria-label={t("proyectos.irA", { nombre: p.nombre })}
               style={{ "--py-dot-color": p.colorAcento }}
             />
           ))}
