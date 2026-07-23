@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import "../styles/Navbar.css";
+import "../styles/NavBar.css";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/adrian-alvarez-665290311";
 const GITHUB_URL = "https://github.com/aalvarez-2024004";
